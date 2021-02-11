@@ -6,8 +6,10 @@ import {
 
 function LoginScreen() {
   return (
-    <View>
-      <Text>Welcome To React Native</Text>
+    <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: 'red', alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Welcome To React Native</Text>
+      </View>
     </View>
   );
 }
