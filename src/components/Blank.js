@@ -73,7 +73,7 @@ function Blank(props) {
 
 Blank.propTypes = {
   label: PropTypes.string,
-  buttonLabel: PropTypes.stringg,
+  buttonLabel: PropTypes.string,
   onPress: PropTypes.func
 };
 
