@@ -6,7 +6,7 @@ import {
 import {
   // Loading,
   // Success,
-  Blank
+  // Blank
 } from '../components';
 
 function DevScene() {
@@ -18,13 +18,13 @@ function DevScene() {
       {/* <Success
         label="Rekening telah berhasil ditambahkan"
       /> */}
-      <Blank
+      {/* <Blank
         label="Kamu tidak memiliki rekening yang terhubung, silahkan tambahkan rekening."
         buttonLabel="Tambah Rekening"
         onPress={() => {
           alert('Tambah Rekening');
         }}
-      />
+      /> */}
     </View>
   );
 }

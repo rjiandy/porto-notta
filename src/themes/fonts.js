@@ -11,5 +11,17 @@ export default {
   'Default-12-white': {
     fontSize: 12,
     color: colors.white
+  },
+  'Default-14-black': {
+    fontSize: 14
+  },
+  'Default-14-white': {
+    fontSize: 14,
+    color: colors.white
+  },
+  'Default-14-white-bold': {
+    fontSize: 14,
+    color: colors.white,
+    fontWeight: '500'
   }
 };

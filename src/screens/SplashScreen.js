@@ -7,7 +7,6 @@ import { Actions } from 'react-native-router-flux';
 
 import colors from '../themes/colors';
 
-// import NottaSplash from '../assets/notta_logo_splash.png';
 import NottaSplash from '../assets/notta_logo_white.svg';
 
 const styles = StyleSheet.create({
@@ -22,7 +21,7 @@ const styles = StyleSheet.create({
 function SplashScreen() {
   useEffect(() => {
     setTimeout(() => {
-      Actions.reset('onboardingScreen');
+      Actions.reset('loginScreen');
     }, 1000);
   });
   return (
