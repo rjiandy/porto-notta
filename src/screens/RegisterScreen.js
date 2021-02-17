@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -7,14 +7,19 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native';
+
 import { Actions } from 'react-native-router-flux';
 
 import colors from '../themes/colors';
 import fonts from '../themes/fonts';
 
-import LoginImage from '../assets/login.png';
+import RegisterImage from '../assets/register.png';
+import LeftArrow from '../assets/left_icon.png';
+
 import UserIcon from '../assets/user_icon.svg';
 import PasswordIcon from '../assets/password_icon.svg';
+import EmailIcon from '../assets/email_icon.svg';
+import PhoneIcon from '../assets/phone_icon.svg';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,14 +27,15 @@ const styles = StyleSheet.create({
   },
   header: {
     marginTop: 40,
-    marginBottom: 40
+    flexDirection: 'row',
+    justifyContent: 'center'
   },
   imageContainer: {
     marginTop: 40,
     marginHorizontal: 14,
     alignSelf: 'center'
   },
-  loginContainer: {
+  registerContainer: {
     marginTop: 14,
     marginHorizontal: 24
   },
@@ -57,29 +63,47 @@ const styles = StyleSheet.create({
   }
 });
 
-function LoginScreen() {
-  const [username, setUserName] = useState();
-  const [password, setPassword] = useState();
+function RegisterScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.bodyWhite }}>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={[fonts['Default-14-black'], { alignSelf: 'center' }]}>
-            Masuk/Daftar
-          </Text>
+          <TouchableOpacity
+            onPress={() => Actions.pop()}
+            style={{ position: 'absolute', left: 12 }}
+          >
+            <Image width="30" height="22" source={LeftArrow} />
+          </TouchableOpacity>
+          <View style={{ flex: 1 }}>
+            <Text style={[fonts['Default-14-black'], { alignSelf: 'center' }]}>
+              Buat Akunmu Sekarang
+            </Text>
+          </View>
         </View>
 
         <View style={styles.imageContainer}>
-          <Image source={LoginImage} resizeMode="contain" />
+          <Image source={RegisterImage} resizeMode="contain" />
         </View>
-        <View style={styles.loginContainer}>
+        <View style={styles.registerContainer}>
           <View style={styles.inputContainer}>
             <UserIcon width={23} height={23} />
             <TextInput
-              placeholder="Email"
-              value={username}
-              onChangeText={(input) => setUserName(input)}
+              placeholder="Nama Lengkap"
+              style={[fonts['Default-14-black'], { marginLeft: 10 }]}
+            />
+          </View>
+          <View style={styles.inputContainer}>
+            <EmailIcon width={23} height={23} />
+            <TextInput
+              placeholder="Alamat Email"
+              style={[fonts['Default-14-black'], { marginLeft: 10 }]}
+            />
+          </View>
+          <View style={styles.inputContainer}>
+            <PhoneIcon width={23} height={23} />
+            <TextInput
+              placeholder="Nomor Telepon"
               style={[fonts['Default-14-black'], { marginLeft: 10 }]}
             />
           </View>
@@ -88,19 +112,19 @@ function LoginScreen() {
             <TextInput
               placeholder="Password"
               secureTextEntry
-              value={password}
-              onChangeText={(input) => setPassword(input)}
+              style={[fonts['Default-14-black'], { marginLeft: 10 }]}
+            />
+          </View>
+          <View style={styles.inputContainer}>
+            <PasswordIcon width={23} height={23} />
+            <TextInput
+              placeholder="Konfirmasi Password"
+              secureTextEntry
               style={[fonts['Default-14-black'], { marginLeft: 10 }]}
             />
           </View>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={[styles.button, { backgroundColor: colors.yellowGreen }]}>
-              <Text style={fonts['Default-14-white-bold']}>Masuk</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[styles.button, { backgroundColor: colors.skyBlueCrayola }]}
-              onPress={() => Actions.registerScreen()}
-            >
+            <TouchableOpacity style={[styles.button, { backgroundColor: colors.skyBlueCrayola }]}>
               <Text style={fonts['Default-14-white-bold']}>Daftar</Text>
             </TouchableOpacity>
           </View>
@@ -111,4 +135,4 @@ function LoginScreen() {
   );
 }
 
-export default LoginScreen;
+export default RegisterScreen;

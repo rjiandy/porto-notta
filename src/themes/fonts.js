@@ -12,6 +12,9 @@ export default {
     fontSize: 12,
     color: colors.white
   },
+  'Default-12': {
+    fontSize: 12
+  },
   'Default-14-black': {
     fontSize: 14
   },

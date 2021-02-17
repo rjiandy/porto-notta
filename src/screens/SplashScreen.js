@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 function SplashScreen() {
   useEffect(() => {
     setTimeout(() => {
-      Actions.reset('loginScreen');
+      Actions.reset('onboardingScreen');
     }, 1000);
   });
   return (

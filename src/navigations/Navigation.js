@@ -18,6 +18,7 @@ import SplashScreen from '../screens/SplashScreen';
 import HomeScreen from '../screens/HomeScreen';
 import AnalyticScreen from '../screens/AnalyticScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import RegisterScreen from '../screens/RegisterScreen';
 
 import DevScene from '../screens/DevScene'; //TODO: Remove this dev scene
 
@@ -40,6 +41,7 @@ function NottaNavigation() {
         <Scene key="splashScreen" component={SplashScreen} title="Splash" initial />
         <Scene key="onboardingScreen" component={OnboardingScreen} title="Onboarding" />
         <Scene key="loginScreen" component={LoginScreen} title="Login" />
+        <Scene key="registerScreen" component={RegisterScreen} title="Register" />
         <Scene key="dev" component={DevScene} title="Dev" />
         <Tabs
           key="mainTabs"

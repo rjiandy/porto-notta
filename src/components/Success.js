@@ -1,56 +1,59 @@
-// import React from 'react';
-// import {
-//   View,
-//   StyleSheet,
-//   Text
-// } from 'react-native';
-// import PropTypes from 'prop-types';
+import React from 'react';
+import {
+  View,
+  StyleSheet,
+  Text,
+  Dimensions
+} from 'react-native';
+import PropTypes from 'prop-types';
 
-// import SuccessIcon from '../assets/success_rocket.svg';
+import SuccessIcon from '../assets/success.svg';
 
-// import colors from '../themes/colors';
-// import fonts from '../themes/fonts';
+import colors from '../themes/colors';
+import fonts from '../themes/fonts';
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     position: 'absolute',
-//     top: 0,
-//     bottom: 0,
-//     left: 0,
-//     right: 0,
-//     backgroundColor: colors.jet,
-//     justifyContent: 'center',
-//     alignItems: 'center'
-//   },
-//   textContainer: {
-//     marginTop: 50,
-//     alignItems: 'center',
-//     width: '70%'
-//   },
-//   textStyle: {
-//     textAlign: 'center',
-//     ...fonts['Default-12-white'],
-//     lineHeight: 18
-//   }
-// });
+const windowWidth = Dimensions.get('window').width;
 
-// function Success(props) {
-//   const { label } = props;
-//   return (
-//     <View style={styles.container}>
-//       <SuccessIcon width="180" height="180" />
-//       <View style={styles.textContainer}>
-//         <Text style={styles.textStyle}>
-//           {label}
-//         </Text>
-//       </View>
-//     </View>
-//   );
-// }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: colors.bodyWhite,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  textContainer: {
+    marginTop: 50,
+    alignItems: 'center',
+    width: '70%'
+  },
+  textStyle: {
+    textAlign: 'center',
+    ...fonts['Default-12'],
+    lineHeight: 18
+  }
+});
 
-// Success.propTypes = {
-//   label: PropTypes.string
-// };
+function Success(props) {
+  const { label } = props;
+  return (
+    <View style={styles.container}>
+      <SuccessIcon width={windowWidth * 0.8} />
+      <View style={styles.textContainer}>
+        <Text style={styles.textStyle}>
+          {label}
+        </Text>
+      </View>
+    </View>
+  );
+}
 
-// export default Success;
+Success.propTypes = {
+  label: PropTypes.string
+};
+
+export default Success;

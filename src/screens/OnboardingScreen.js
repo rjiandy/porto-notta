@@ -27,7 +27,12 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 80,
     borderRadius: 18,
-    marginTop: 20
+    marginBottom: 20
+  },
+  image: {
+    height: windowHeight * 0.7,
+    width: '100%',
+    marginBottom: 24
   }
 });
 
@@ -42,16 +47,14 @@ function OnboardingScreen() {
         loop={false}
         activeDotColor={colors.jet}
         dotColor={colors.lightGray}
+        paginationStyle={{ marginBottom: 40 }}
       >
         <View style={{ flex: 1 }}>
           <View style={{ flex: 1, backgroundColor: colors.bodyWhite }}>
-            <View style={styles.imageContainer}>
-              <Image
-                source={FirstOnboard}
-                resizeMode="contain"
-                style={{ width: '100%' }}
-              />
-            </View>
+            <Image
+              source={FirstOnboard}
+              style={styles.image}
+            />
             <View style={{ marginHorizontal: 60 }} >
               <Text style={{ textAlign: 'center', lineHeight: 24 }}>
                 Semua Rekeningmu Dalam Satu Aplikasi. Kamu Bisa Memonitor Semua Rekeningmu Dalam Satu Aplikasi
@@ -61,13 +64,10 @@ function OnboardingScreen() {
         </View>
         <View style={{ flex: 1 }}>
           <View style={{ flex: 1, backgroundColor: colors.maximumYellowRed }}>
-            <View style={styles.imageContainer}>
-              <Image
-                source={SecondOnboard}
-                resizeMode="contain"
-                style={{ width: '100%' }}
-              />
-            </View>
+            <Image
+              source={SecondOnboard}
+              style={styles.image}
+            />
             <View style={{ marginHorizontal: 60 }} >
               <Text style={{ textAlign: 'center', lineHeight: 24 }}>
               Analisa Pengeluaran Dan Pendapatanmu Dari Semua Rekening Yang Kamu Miliki
@@ -77,27 +77,23 @@ function OnboardingScreen() {
         </View>
         <View style={{ flex: 1 }}>
           <View style={{ flex: 1, backgroundColor: colors.carolinaBlue }}>
-            <View style={styles.imageContainer}>
-              <Image
-                source={ThirdOnboard}
-                resizeMode="contain"
-                style={{ width: '100%' }}
-              />
-            </View>
+            <Image
+              source={ThirdOnboard}
+              style={styles.image}
+            />
             <View style={{ marginHorizontal: 60 }} >
               <Text style={{ textAlign: 'center', lineHeight: 24 }}>
                 Monitor Semua Rekeningmu Di Notta Tempat Yang Bisa Kamu Percaya
               </Text>
             </View>
-            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-end' }}>
               <TouchableOpacity
                 style={styles.button}
                 onPress={() => {
-                  // CROSSCHECK IF EVER ONBOARD
-                  Actions.mainTabs();
+                  Actions.loginScreen();
                 }}
               >
-                <Text style={fonts['Default-14-white-bold']}>Get Started</Text>
+                <Text style={fonts['Default-14-white-bold']}>Masuk</Text>
               </TouchableOpacity>
             </View>
           </View>
