@@ -23,6 +23,7 @@ import RegisterScreen from '../screens/RegisterScreen';
 import DevScene from '../screens/DevScene'; //TODO: Remove this dev scene
 
 import TabIcon from './TabIcon';
+import AddBankAccountScreen from '../screens/AddBankAccount';
 
 const styles = StyleSheet.create({
   tabBar: {
@@ -38,10 +39,11 @@ function NottaNavigation() {
   return (
     <Router>
       <Stack key="root" headerMode="none">
-        <Scene key="splashScreen" component={SplashScreen} title="Splash" initial />
+        <Scene key="splashScreen" component={SplashScreen} title="Splash" />
         <Scene key="onboardingScreen" component={OnboardingScreen} title="Onboarding" />
         <Scene key="loginScreen" component={LoginScreen} title="Login" />
         <Scene key="registerScreen" component={RegisterScreen} title="Register" />
+        <Scene key="addBankScreen" component={AddBankAccountScreen} title="Add Bank Account" initial />
         <Scene key="dev" component={DevScene} title="Dev" />
         <Tabs
           key="mainTabs"
