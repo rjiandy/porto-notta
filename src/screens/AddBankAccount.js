@@ -89,14 +89,11 @@ function AddBankAccount() {
     <ScrollView style={{ flex: 1, backgroundColor: colors.bodyWhite }}>
       <View style={styles.container}>
         <View style={styles.header}>
-          <TouchableOpacity
-            onPress={() => Actions.pop()}
-            style={{ position: 'absolute', left: 12 }}
-          >
-            <Image width="30" height="22" source={LeftArrow} />
-          </TouchableOpacity>
-          <View style={{ flex: 1 }}>
-            <Text style={[fonts['Default-14-black'], { alignSelf: 'center' }]}>
+          <View style={{ flex: 1, flexDirection: 'row', paddingLeft: 20 }}>
+            <TouchableOpacity onPress={() => Actions.pop()}>
+              <Image width="30" height="22" source={LeftArrow} />
+            </TouchableOpacity>
+            <Text style={[fonts['Default-14-black'], { textAlign: 'center', flex: 1, marginLeft: -30 }]}>
               Tambah Rekening
             </Text>
           </View>

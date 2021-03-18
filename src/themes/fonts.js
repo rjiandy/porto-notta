@@ -26,5 +26,8 @@ export default {
     fontSize: 14,
     color: colors.white,
     fontWeight: '500'
+  },
+  'Default-18': {
+    fontSize: 18
   }
 };

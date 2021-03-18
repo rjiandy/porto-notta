@@ -9,5 +9,6 @@ export default {
   eerieBlack: '#262626',
   carolinaBlue: '#2D9CDB',
   maximumYellowRed: '#FFCA72',
-  skyBlueCrayola: '#00DBF7'
+  skyBlueCrayola: '#00DBF7',
+  platinum: '#EAE5E5'
 };
