@@ -45,7 +45,7 @@ function NottaNavigation() {
         <Scene key="loginScreen" component={LoginScreen} title="Login" />
         <Scene key="registerScreen" component={RegisterScreen} title="Register" />
         <Scene key="addBankScreen" component={AddBankAccountScreen} title="Add Bank Account" />
-        <Scene key="selectRekening" component={SelectRekeningScreen} title="Select Rekening" initial />
+        <Scene key="selectRekening" component={SelectRekeningScreen} title="Select Rekening" />
         <Scene key="dev" component={DevScene} title="Dev" />
         <Tabs
           key="mainTabs"
@@ -56,6 +56,7 @@ function NottaNavigation() {
           type="replace"
           lazy
           showLabel={false}
+          initial
         >
           <Scene
             key="homeScreen"

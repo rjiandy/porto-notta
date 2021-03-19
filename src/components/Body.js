@@ -10,7 +10,8 @@ export default function Body({ children, contentContainerStyle, ...otherProps })
         { backgroundColor: colors.bodyWhite, flex: 1 },
         contentContainerStyle
       ]}
-      {...otherProps}>
+      {...otherProps}
+    >
       {children}
     </ScrollView>
   );

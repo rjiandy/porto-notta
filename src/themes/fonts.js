@@ -29,5 +29,10 @@ export default {
   },
   'Default-18': {
     fontSize: 18
+  },
+  'Default-28-white-bold': {
+    fontSize: 28,
+    color: colors.white,
+    fontWeight: '500'
   }
 };

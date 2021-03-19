@@ -1,5 +1,5 @@
 export default {
-  black: '#000000',
+  black: '#262626',
   white: '#FFFFFF',
   bodyWhite: '#FAFAFA',
   jet: '#353533',
@@ -10,5 +10,8 @@ export default {
   carolinaBlue: '#2D9CDB',
   maximumYellowRed: '#FFCA72',
   skyBlueCrayola: '#00DBF7',
-  platinum: '#EAE5E5'
+  platinum: '#EAE5E5',
+  cultured: '#F2F2F2',
+  candyPink: '#E45C68',
+  dimGray: '#676767'
 };
