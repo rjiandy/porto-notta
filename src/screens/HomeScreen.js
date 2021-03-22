@@ -12,6 +12,7 @@ import {
 
 import colors from '../themes/colors';
 import fonts from '../themes/fonts';
+import formatThousand from '../utils/thousandSeparator';
 
 import {
   Body,
@@ -84,8 +85,109 @@ const styles = StyleSheet.create({
   rekeningButtonNumber: {
     ...fonts['Default-12-white'],
     marginTop: 10
+  },
+  transactionListContainer: {
+    flex: 1,
+    marginTop: 30
+  },
+  dateGroupContainer: {
+    marginHorizontal: 20
+  },
+  dateGroupTitle: {
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderColor: colors.silverChalice,
+    paddingRight: 10
+  },
+  dateTitle: {
+    flex: 1,
+    ...fonts['Default-14-black'],
+    paddingBottom: 10
+  },
+  listTransaction: {
+    marginTop: 20
+  },
+  transactionItem: {
+    marginBottom: 16,
+    flexDirection: 'row'
+  },
+  transactionDetail: {
+    marginLeft: 14,
+    flex: 1,
+    marginRight: 10,
+    justifyContent: 'center'
+  },
+  transactionAmountText: {
+    ...fonts['Default-12-bold'],
+    color: colors.candyPink
+  },
+  groupAmount: {
+    ...fonts['Default-12-bold'],
+    color: colors.yellowGreen
   }
 });
+
+function RekeningButton(props) {
+  const {
+    isActive,
+    onPress,
+    label
+    // bankImage
+  } = props;
+  return (
+    <TouchableOpacity
+      style={[styles.rekeningWrapper, isActive && styles.activeRekening]}
+      onPress={onPress}
+    >
+      <View style={styles.rekeningLogo} />
+      <Text style={styles.rekeningButtonNumber}>{label}</Text>
+    </TouchableOpacity>
+  );
+}
+
+function TransactionGroup(props) {
+  const { sumAmount } = props;
+  const isNegative = sumAmount < 0;
+  return (
+    <View style={styles.dateGroupContainer}>
+      <View style={styles.dateGroupTitle}>
+        <Text style={styles.dateTitle}>24 Desember 2020</Text>
+        <Text style={[styles.groupAmount, isNegative && { color: colors.candyPink }]}>
+          {`${isNegative ? '-' : '+'} ${formatThousand(Math.abs(sumAmount))}`}
+        </Text>
+      </View>
+      <View style={styles.listTransaction}>
+        <TransactionItem
+          amount={100000}
+        />
+        <TransactionItem
+          amount={200000}
+          isDebit
+        />
+      </View>
+    </View>
+  );
+}
+
+function TransactionItem(props) {
+  const { isDebit, amount } = props;
+  return (
+    <View style={styles.transactionItem}>
+      <View style={styles.rekeningLogo} />
+      <View style={styles.transactionDetail}>
+        <View style={{ flexDirection: 'row', marginBottom: 4 }}>
+          <Text style={{ flex: 1, ...fonts['Default-12-bold'] }}>2948294</Text>
+          <Text style={[styles.transactionAmountText, isDebit && { color: colors.yellowGreen }]}>
+            {`${isDebit ? '+' : '-' } ${formatThousand(amount)}`}
+          </Text>
+        </View>
+        <View style={{ width: '70%' }}>
+          <Text style={fonts['Default-11']}>TRSF E-BANKING BELINDA CHAMORA</Text>
+        </View>
+      </View>
+    </View>
+  );
+}
 
 function HomeScreen() {
   return (
@@ -108,21 +210,17 @@ function HomeScreen() {
           >
             <View style={styles.scrollWrapper}>
               {/* LATER REPEAT ALL THE BANKS BELOW */}
-              <TouchableOpacity style={styles.rekeningWrapper}>
-                <View style={styles.rekeningLogo} />
-                <Text style={styles.rekeningButtonNumber}>1231</Text>
-              </TouchableOpacity><TouchableOpacity style={styles.rekeningWrapper}>
-                <View style={styles.rekeningLogo} />
-                <Text style={styles.rekeningButtonNumber}>1231</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity style={[styles.rekeningWrapper, styles.activeRekening ]}>
-                <View style={styles.rekeningLogo} />
-                <Text style={styles.rekeningButtonNumber}>Semua</Text>
-              </TouchableOpacity>
+              <RekeningButton label={1323} />
+              <RekeningButton label="Semua" isActive />
 
             </View>
           </ScrollView>
+          <View style={styles.transactionListContainer}>
+            <TransactionGroup
+              sumAmount={-100000}
+            />
+
+          </View>
         </View>
       </ScrollView>
     </View>

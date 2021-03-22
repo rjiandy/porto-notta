@@ -13,5 +13,6 @@ export default {
   platinum: '#EAE5E5',
   cultured: '#F2F2F2',
   candyPink: '#E45C68',
-  dimGray: '#676767'
+  dimGray: '#676767',
+  silverChalice: '#ABABAB'
 };

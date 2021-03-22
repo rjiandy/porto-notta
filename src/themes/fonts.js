@@ -8,12 +8,20 @@ export default {
     fontSize: 10,
     color: colors.white
   },
+  'Default-11': {
+    fontSize: 11,
+    color: colors.black
+  },
   'Default-12-white': {
     fontSize: 12,
     color: colors.white
   },
   'Default-12': {
     fontSize: 12
+  },
+  'Default-12-bold': {
+    fontSize: 12,
+    fontWeight: '700'
   },
   'Default-14-black': {
     fontSize: 14
