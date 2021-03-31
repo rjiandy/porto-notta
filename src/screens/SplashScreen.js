@@ -4,6 +4,7 @@ import {
   StyleSheet
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import colors from '../themes/colors';
 
@@ -20,8 +21,20 @@ const styles = StyleSheet.create({
 
 function SplashScreen() {
   useEffect(() => {
-    setTimeout(() => {
-      Actions.reset('onboardingScreen');
+    setTimeout(async () => {
+      const onboarded = await AsyncStorage.getItem('@onboarded');
+      const token = await AsyncStorage.getItem('@token');
+      // if (onboarded && onboarded.length > 0) {
+      //   if (token && token.length > 0) {
+      //     Actions.replace('homeScreen');
+      //   } else {
+      //     Actions.replace('loginScreen');
+      //   }
+      // } else {
+      //   Actions.replace('onboardingScreen');
+      // }
+      
+      Actions.loginScreen(); // TEMP
     }, 1000);
   });
   return (

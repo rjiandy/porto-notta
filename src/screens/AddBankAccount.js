@@ -93,9 +93,11 @@ function AddBankAccount() {
             <TouchableOpacity onPress={() => Actions.pop()}>
               <Image width="30" height="22" source={LeftArrow} />
             </TouchableOpacity>
-            <Text style={[fonts['Default-14-black'], { textAlign: 'center', flex: 1, marginLeft: -30 }]}>
-              Tambah Rekening
-            </Text>
+            <View style={{ flex: 1, alignItems: 'center' }}>
+              <Text style={[fonts['Default-14-black'], { marginLeft: -30 }]}>
+                Tambah Rekening
+              </Text>
+            </View>
           </View>
         </View>
 
@@ -132,7 +134,10 @@ function AddBankAccount() {
             />
           </View>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={[styles.button, { backgroundColor: colors.yellowGreen }]}>
+            <TouchableOpacity
+              style={[styles.button, { backgroundColor: colors.yellowGreen }]}
+              onPress={() => Actions.selectRekening()}
+            >
               <Text style={fonts['Default-14-white-bold']}>Daftar</Text>
             </TouchableOpacity>
           </View>

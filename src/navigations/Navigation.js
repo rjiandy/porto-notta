@@ -40,7 +40,7 @@ function NottaNavigation() {
   return (
     <Router>
       <Stack key="root" headerMode="none">
-        <Scene key="splashScreen" component={SplashScreen} title="Splash" />
+        <Scene key="splashScreen" component={SplashScreen} title="Splash" intial/>
         <Scene key="onboardingScreen" component={OnboardingScreen} title="Onboarding" />
         <Scene key="loginScreen" component={LoginScreen} title="Login" />
         <Scene key="registerScreen" component={RegisterScreen} title="Register" />
@@ -56,7 +56,6 @@ function NottaNavigation() {
           type="replace"
           lazy
           showLabel={false}
-          initial
         >
           <Scene
             key="homeScreen"
@@ -69,7 +68,7 @@ function NottaNavigation() {
           <Scene
             key="analyticScreen"
             component={AnalyticScreen}
-            title="HomeScreen"
+            title="AnalyticScreen"
             icon={({ tintColor }) => (
               <TabIcon name="Analisa" tintColor={tintColor} />
             )}
@@ -77,7 +76,7 @@ function NottaNavigation() {
           <Scene
             key="profileScreen"
             component={ProfileScreen}
-            title="HomeScreen"
+            title="ProfileScreen"
             icon={({ tintColor }) => (
               <TabIcon name="Akun" tintColor={tintColor} />
             )}

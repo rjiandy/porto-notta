@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Swiper from 'react-native-swiper';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import FirstOnboard from '../assets/onboarding_1.png';
 import SecondOnboard from '../assets/onboarding_2.png';
@@ -90,7 +91,9 @@ function OnboardingScreen() {
               <TouchableOpacity
                 style={styles.button}
                 onPress={() => {
-                  Actions.loginScreen();
+                  AsyncStorage.setItem('@onboarded', 'true').then(() => {
+                    Actions.replace('loginScreen');
+                  });
                 }}
               >
                 <Text style={fonts['Default-14-white-bold']}>Masuk</Text>
