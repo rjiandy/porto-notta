@@ -19,8 +19,8 @@ import HomeScreen from '../screens/HomeScreen';
 import AnalyticScreen from '../screens/AnalyticScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import RegisterScreen from '../screens/RegisterScreen';
-import AddBankAccountScreen from '../screens/AddBankAccount';
-import SelectRekeningScreen from '../screens/SelectRekening';
+import RegisterBankAccountScreen from '../screens/RegisterBankAccount';
+import RegisterRekeningScreen from '../screens/RegisterRekening';
 
 import DevScene from '../screens/DevScene'; //TODO: Remove this dev scene
 
@@ -42,10 +42,10 @@ function NottaNavigation() {
       <Stack key="root" headerMode="none">
         <Scene key="splashScreen" component={SplashScreen} title="Splash" intial/>
         <Scene key="onboardingScreen" component={OnboardingScreen} title="Onboarding" />
-        <Scene key="loginScreen" component={LoginScreen} title="Login" />
+        <Scene key="loginScreen" component={LoginScreen} title="Login"/>
         <Scene key="registerScreen" component={RegisterScreen} title="Register" />
-        <Scene key="addBankScreen" component={AddBankAccountScreen} title="Add Bank Account" />
-        <Scene key="selectRekening" component={SelectRekeningScreen} title="Select Rekening" />
+        <Scene key="registerBankScreen" component={RegisterBankAccountScreen} title="Register Bank Account" />
+        <Scene key="registerRekening" component={RegisterRekeningScreen} title="Register Rekening" />
         <Scene key="dev" component={DevScene} title="Dev" />
         <Tabs
           key="mainTabs"

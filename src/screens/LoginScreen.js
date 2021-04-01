@@ -62,8 +62,9 @@ const styles = StyleSheet.create({
 });
 
 function LoginScreen() {
-  const [username, setUserName] = useState('test@gmail.com');
-  const [password, setPassword] = useState('Test123!');
+  const [username, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+
   const [isLoading, setLoading] = useState(false);
 
   const onLoginPress = async () => {
@@ -80,18 +81,19 @@ function LoginScreen() {
         const body = await result.json();
         if (body && body.data) {
           const { id: userId, name, email, token, refresh_token } = body.data;
-          const saveBasicData = [
-            AsyncStorage.setItem('@userId', JSON.stringify(userId)),
-            AsyncStorage.setItem('@name', name),
-            AsyncStorage.setItem('@email', email),
-            AsyncStorage.setItem('@token', token),
-            AsyncStorage.setItem('@refreshToken ', refresh_token)
-          ];
+          const idPair = ['@userId', JSON.stringify(userId)];
+          const namePair = ['@name', name];
+          const emailpair = ['@email', email];
+          const tokenPair = ['@token', token];
+          const refreshTokenPair = ['@refreshToken', refresh_token];
+
           try {
-            Promise.all(saveBasicData);
+            await AsyncStorage.multiSet([idPair, namePair, emailpair, tokenPair, refreshTokenPair]);
           } catch (err) {
-            console.log('error saving basic data to async storage');
+            console.log('error saving basic data to async storage', err);
           }
+
+          Actions.replace('homeScreen');
         }
       } else {
         throw result;
@@ -123,6 +125,7 @@ function LoginScreen() {
               value={username}
               onChangeText={(input) => setUserName(input)}
               style={[fonts['Default-14-black'], { marginLeft: 10, flex: 1 }]}
+              autoCapitalize="none"
             />
           </View>
           <View style={styles.inputContainer}>
@@ -133,6 +136,7 @@ function LoginScreen() {
               value={password}
               onChangeText={(input) => setPassword(input)}
               style={[fonts['Default-14-black'], { marginLeft: 10, flex: 1 }]}
+              autoCapitalize="none"
             />
           </View>
           <View style={styles.buttonContainer}>

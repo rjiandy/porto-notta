@@ -8,10 +8,10 @@ import {
   TouchableOpacity,
   ActivityIndicator
 } from 'react-native';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Actions } from 'react-native-router-flux';
 
-import postJSON from '../api/postJSON';
+import registerUser from '../api/registerUser';
 
 import colors from '../themes/colors';
 import fonts from '../themes/fonts';
@@ -85,8 +85,6 @@ function RegisterScreen() {
     );
   };
 
-  console.log('check valid', checkValidation());
-
   const onRegister = async () => {
     setLoading(true);
     const payload = {
@@ -98,10 +96,22 @@ function RegisterScreen() {
     };
 
     try {
-      const result = await postJSON('/auth/register', payload);
-      console.log(result);
+      const result = await registerUser('/auth/register', payload);
+      const { id: userId, name, email: emailReg, token, refresh_token } = result.data;
+      const idPair = ['@userId', JSON.stringify(userId)];
+      const namePair = ['@name', name];
+      const emailpair = ['@email', emailReg];
+      const tokenPair = ['@token', token];
+      const refreshTokenPair = ['@refreshToken', refresh_token];
+      try {
+        await AsyncStorage.clear();
+        await AsyncStorage.setItem('@onboarded', 'true');
+        await AsyncStorage.multiSet([idPair, namePair, emailpair, tokenPair, refreshTokenPair]);
+      } catch (err) {
+        console.log('error saving basic data to async storage');
+      }
       alert('Success to register.');
-      Actions.addBankScreen();
+      Actions.registerBankScreen();
     } catch (err) {
       alert(`Failed to register. ${err.message}`);
     } finally {
@@ -136,6 +146,7 @@ function RegisterScreen() {
               style={[fonts['Default-14-black'], { marginLeft: 10, flex: 1 }]}
               value={fullName}
               onChangeText={(input) => setFullName(input)}
+              autoCapitalize="none"
             />
           </View>
           <View style={styles.inputContainer}>
@@ -145,6 +156,7 @@ function RegisterScreen() {
               value={email}
               onChangeText={(input) => setEmail(input)}
               style={[fonts['Default-14-black'], { marginLeft: 10 }]}
+              autoCapitalize="none"
             />
           </View>
           <View style={styles.inputContainer}>
@@ -154,6 +166,7 @@ function RegisterScreen() {
               value={telephoneNumber}
               onChangeText={(input) => setTelephoneNumber(input)}
               style={[fonts['Default-14-black'], { marginLeft: 10, flex: 1 }]}
+              autoCapitalize="none"
             />
           </View>
           <View style={styles.inputContainer}>
@@ -164,6 +177,7 @@ function RegisterScreen() {
               value={password}
               onChangeText={(input) => setPassword(input)}
               style={[fonts['Default-14-black'], { marginLeft: 10, flex: 1 }]}
+              autoCapitalize="none"
             />
           </View>
           <View style={styles.inputContainer}>
@@ -174,6 +188,7 @@ function RegisterScreen() {
               value={confirmPassword}
               onChangeText={(input) => setConfirmPassword(input)}
               style={[fonts['Default-14-black'], { marginLeft: 10, flex: 1 }]}
+              autoCapitalize="none"
             />
           </View>
           <View style={styles.buttonContainer}>

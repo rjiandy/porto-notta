@@ -24,17 +24,15 @@ function SplashScreen() {
     setTimeout(async () => {
       const onboarded = await AsyncStorage.getItem('@onboarded');
       const token = await AsyncStorage.getItem('@token');
-      // if (onboarded && onboarded.length > 0) {
-      //   if (token && token.length > 0) {
-      //     Actions.replace('homeScreen');
-      //   } else {
-      //     Actions.replace('loginScreen');
-      //   }
-      // } else {
-      //   Actions.replace('onboardingScreen');
-      // }
-      
-      Actions.loginScreen(); // TEMP
+      if (onboarded && onboarded.length > 0) {
+        if (token && token.length > 0) {
+          Actions.replace('homeScreen');
+        } else {
+          Actions.replace('loginScreen');
+        }
+      } else {
+        Actions.replace('onboardingScreen');
+      }
     }, 1000);
   });
   return (

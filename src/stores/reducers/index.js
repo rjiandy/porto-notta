@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux';
 
+import registerReducers from './registerStore';
+
 const reducers = {
-  authStore: () => null
+  authStore: () => null,
+  registerStore: registerReducers
 };
 
 const rootReducer = combineReducers(reducers);

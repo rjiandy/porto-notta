@@ -24,7 +24,8 @@ export default {
     fontWeight: '700'
   },
   'Default-14-black': {
-    fontSize: 14
+    fontSize: 14,
+    color: colors.black
   },
   'Default-14-white': {
     fontSize: 14,
@@ -33,6 +34,11 @@ export default {
   'Default-14-white-bold': {
     fontSize: 14,
     color: colors.white,
+    fontWeight: '500'
+  },
+  'Default-16-black-bold': {
+    fontSize: 16,
+    color: colors.black,
     fontWeight: '500'
   },
   'Default-18': {
