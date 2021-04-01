@@ -164,7 +164,7 @@ function RegisterBankAccount(props) {
                   <Image width="30" height="22" source={LeftArrow} />
                 </TouchableOpacity>
                 <View style={{ flex: 1, alignItems: 'center' }}>
-                  <Text style={[fonts['Default-14-black'], { marginLeft: -30 }]}>
+                  <Text style={[fonts['Default-14-black'], { marginLeft: -50 }]}>
                     Tambah Rekening
                   </Text>
                 </View>

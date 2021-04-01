@@ -8,6 +8,7 @@ import {
   ScrollView
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { Actions } from 'react-native-router-flux';
 
 import {
   Header
@@ -19,7 +20,8 @@ import colors from '../themes/colors';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: colors.bodyWhite
   },
   image: {
     width: 200,
@@ -135,7 +137,7 @@ function ProfileScreen() {
   };
 
   const onSettingPress = () => {
-
+    Actions.settingScreen();
   };
 
   return (

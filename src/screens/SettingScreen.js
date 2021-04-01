@@ -1,201 +1,254 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
   Image,
   StyleSheet,
   TouchableOpacity,
-  ScrollView
+  TextInput,
+  Modal,
+  ActivityIndicator
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Actions } from 'react-native-router-flux';
 
 import {
-  Header
+  Header,
+  Success
 } from '../components';
 
-import CoinImage from '../assets/coin.png';
 import fonts from '../themes/fonts';
 import colors from '../themes/colors';
+import LeftArrow from '../assets/left_icon.png';
+
+import patchJSON from '../api/patchJSON';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  },
-  image: {
-    width: 200,
-    height: 200,
-    alignSelf: 'center'
-  },
-  overview: {
-    alignSelf: 'center'
-  },
-  titleText: {
-    ...fonts['Default-18'],
-    textAlign: 'center',
-    marginBottom: 8
-  },
-  profileBtnContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    paddingHorizontal: 14,
-    marginTop: 15
-  },
-  profileButton: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  buttonOverview: {
-    alignItems: 'center'
-  },
-  profileDetailContainer: {
-    marginHorizontal: 16,
-    marginTop: 20
-  },
-  bankList: {
-    borderTopWidth: 1,
-    borderTopColor: colors.black,
-    marginTop: 8,
-    paddingTop: 14
-  },
-
-  // Item Styles
-  rowContainer: {
-    flexDirection: 'row',
-    marginBottom: 20
-  },
-  imageContainer: {
-    width: 50,
-    height: 50,
-    borderRadius: 15,
-    marginRight: 12,
-    backgroundColor: 'green'
-  },
-  rowRightContent: {
     flex: 1,
-    alignItems: 'center',
+    backgroundColor: colors.bodyWhite
+  },
+  header: {
+    marginTop: 30,
     flexDirection: 'row',
-    justifyContent: 'flex-end'
+    justifyContent: 'center',
+    marginBottom: 30
   },
-  bankStatusContainer: {
+  whiteRow: {
+    paddingVertical: 12,
+    paddingLeft: 50,
+    backgroundColor: colors.white,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: colors.cultured
+  },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    width: 70
+    paddingHorizontal: 30
   },
-  bankStatus: {
-    borderRadius: 12,
-    width: 24,
-    height: 24,
-    backgroundColor: colors.yellowGreen,
+  modalContent: {
+    backgroundColor: colors.white,
+    borderRadius: 15,
+    paddingHorizontal: 32,
+    paddingVertical: 30
+  },
+  button: {
+    height: 40,
+    paddingVertical: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 4
+    borderRadius: 15,
+    marginBottom: 24,
+    backgroundColor: colors.yellowGreen,
+    marginHorizontal: 30
+  },
+  smallButtonGroup: {
+    flexDirection: 'row',
+    marginTop: 40,
+    justifyContent: 'space-evenly'
+  },
+  smallButton: {
+    borderRadius: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 24,
+    paddingVertical: 8
   }
 });
 
-function BankItem(props) {
-  const { isActive, onReactivate } = props;
-  return (
-    <View style={styles.rowContainer}>
-      <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-        <View style={styles.imageContainer} />
-        <Text style={fonts['Default-14-black']}>21314124</Text>
+function SettingScreen() {
+  const [changePassword, setChangePassword] = useState(false);
+  const [showConfirmModal, setConfirmModal] = useState(false);
+  const [isLoading, setLoading] = useState(false);
+  const [isSuccess, setSuccess] = useState(false);
+
+  const [oldPassword, setOldPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [newConfirmationPassword, setConfirmationPassword] = useState('');
+
+  const onLogout = async () => {
+    await AsyncStorage.clear();
+    await AsyncStorage.setItem('@onboarded', 'true');
+    Actions.loginScreen();
+  };
+
+  const onConfirmPress = async () => {
+    setLoading(true);
+    try {
+      await patchJSON('/auth/update-password', {
+        old_password: oldPassword,
+        new_password: newPassword,
+        new_password_validate: newConfirmationPassword
+      });
+      setSuccess(true);
+      setConfirmModal(false);
+      setChangePassword(false);
+      setNewPassword('');
+      setOldPassword('');
+      setConfirmationPassword('');
+
+      setTimeout(() => {
+        setSuccess(false);
+      }, 700);
+
+    } catch (err) {
+      alert('Failed To Change Password ', err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const isAllFilled = () => {
+    return (
+      oldPassword && oldPassword.length > 0 &&
+      newPassword && newPassword.length > 0 &&
+      newConfirmationPassword && newConfirmationPassword.length > 0
+    );
+  };
+  if (isSuccess) {
+    return (
+      <View style={{ flex: 1 }}>
+        <Success label="Password Berhasil Diganti" />
       </View>
-      <View style={styles.rowRightContent}>
-        {
-          !isActive && (
-            <TouchableOpacity onPress={onReactivate}>
-              <Icon name="reload-outline" size={24} style={{ marginBottom: 16 }} />
+    );
+  } else {
+    return (
+      <View style={styles.container}>
+        <Header />
+        <View style={styles.header}>
+          <View style={{ flex: 1, flexDirection: 'row', paddingLeft: 20 }}>
+            <TouchableOpacity onPress={() => Actions.pop()}>
+              <Image width="30" height="22" source={LeftArrow} />
             </TouchableOpacity>
+            <View style={{ flex: 1, alignItems: 'center' }}>
+              <Text style={[fonts['Default-14-black'], { marginLeft: -50 }]}>
+                Pengaturan
+              </Text>
+            </View>
+          </View>
+        </View>
+        {
+          showConfirmModal && (
+            <Modal
+              presentationStyle="overFullScreen"
+              transparent
+            >
+              <View style={styles.overlay}>
+                <View style={styles.modalContent}>
+                  <Text style={[fonts['Default-14-black'], { textAlign: 'center' }]}>
+                    Apakah Anda Yakin Untuk Mengganti Password Anda?
+                  </Text>
+                  <View style={styles.smallButtonGroup}>
+                    <TouchableOpacity
+                      style={[styles.smallButton, { backgroundColor: colors.yellowGreen }]}
+                      onPress={() => onConfirmPress()}
+                      disabled={isLoading}
+                    >
+                      {
+                        isLoading ? (
+                          <ActivityIndicator size="small" color={colors.white} />
+                        ) : (
+                          <Text style={fonts['Default-14-white']}>Ganti</Text>
+                        )
+                      }
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      style={[styles.smallButton, { backgroundColor: colors.candyPink }]}
+                      onPress={() => setConfirmModal(false)}
+                      disabled={isLoading}
+                    >
+                      <Text style={fonts['Default-14-white']}>Batal</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </View>
+            </Modal>
           )
         }
-        <View style={styles.bankStatusContainer}>
-          <View style={[styles.bankStatus, !isActive && { backgroundColor: colors.candyPink }]}>
-            <Icon name={isActive ? 'checkmark' : 'close'} size={20} color={colors.white} />
-          </View>
-          <Text style={fonts['Default-12']}>
-            {isActive ? 'Aktif' : 'Tidak Aktif'}
-          </Text>
+        <View style={{ flex: 1 }}>
+          {
+            changePassword ? (
+              <View style={{ flex: 1 }}>
+                <View style={styles.whiteRow}>
+                  <TextInput
+                    placeholder="Password Lama"
+                    autoCapitalize="none"
+                    value={oldPassword}
+                    onChangeText={(text) => setOldPassword(text)}
+                    secureTextEntry
+                  />
+                </View>
+                <View style={styles.whiteRow}>
+                  <TextInput
+                    placeholder="Password Baru"
+                    autoCapitalize="none"
+                    value={newPassword}
+                    onChangeText={(text) => setNewPassword(text)}
+                    secureTextEntry
+                  />
+                </View>
+                <View style={styles.whiteRow}>
+                  <TextInput
+                    placeholder="Ulangi Password Baru"
+                    autoCapitalize="none"
+                    value={newConfirmationPassword}
+                    onChangeText={(text) => setConfirmationPassword(text)}
+                    secureTextEntry
+                  />
+                </View>
+                <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => setConfirmModal(true)}
+                    disabled={!isAllFilled()}
+                  >
+                    <Text style={fonts['Default-14-white-bold']}>Ganti Password</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            ) : (
+              <>
+                <TouchableOpacity style={styles.whiteRow} onPress={() => setChangePassword(true)}>
+                  <Text style={fonts['Default-14-black-bold']}>Ganti Password</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.whiteRow} onPress={() => onLogout()}>
+                  <Text style={fonts['Default-14-black-bold']}>Logout</Text>
+                </TouchableOpacity>
+              </>
+            )
+          }
         </View>
       </View>
-    </View>
-  );
+    );
+  }
 }
 
-
-function ProfileScreen() {
-
-  const onAddPress = () => {
-
-  };
-
-  const onEditPress = () => {
-
-  };
-
-  const onSettingPress = () => {
-
-  };
-
-  return (
-    <View style={{ flex: 1 }}>
-      <Header />
-      <ScrollView style={{ flex: 1 }}>
-        <View style={styles.container}>
-          <Image source={CoinImage} style={styles.image} />
-          <View style={styles.overview}>
-            <Text style={styles.titleText}>JOHAN GANDA WIJAYA</Text>
-            <Text style={styles.titleText}>Rp 2.378.967.988</Text>
-          </View>
-          <View style={styles.profileBtnContainer}>
-            <View style={styles.buttonOverview}>
-              <TouchableOpacity
-                style={[styles.profileButton, { backgroundColor: colors.yellowGreen }]}
-                onPress={onAddPress}
-              >
-                <Icon name="add-outline" size={60} color={colors.white} style={{ marginLeft: 2 }} />
-              </TouchableOpacity>
-              <Text style={[fonts['Default-12'], { marginTop: 6 }]}>Tambah</Text>
-            </View>
-            <View style={styles.buttonOverview}>
-              <TouchableOpacity
-                style={[styles.profileButton, { backgroundColor: colors.candyPink }]}
-                onPress={onEditPress}
-              >
-                <Icon name="remove-outline" size={60} color={colors.white} style={{ marginLeft: 2 }} />
-              </TouchableOpacity>
-              <Text style={[fonts['Default-12'], { marginTop: 6 }]}>Ubah</Text>
-            </View>
-            <View style={styles.buttonOverview}>
-              <TouchableOpacity
-                style={[styles.profileButton, { backgroundColor: colors.black }]}
-                onPress={onSettingPress}
-              >
-                <Icon name="settings" size={40} color={colors.white} style={{ marginLeft: 2 }} />
-              </TouchableOpacity>
-              <Text style={[fonts['Default-12'], { marginTop: 6 }]}>Pengaturan</Text>
-            </View>
-          </View>
-          <View style={styles.profileDetailContainer}>
-            <Text style={fonts['Default-14-black']}>Daftar Rekening</Text>
-            <Text style={[fonts['Default-12'], { marginTop: 4 }]}>
-              4 Rekening Terdaftar
-            </Text>
-            <View style={styles.bankList}>
-              <BankItem />
-              <BankItem />
-              <BankItem />
-              <BankItem />
-              <BankItem />
-              <BankItem />
-              <BankItem isActive />
-            </View>
-          </View>
-        </View>
-      </ScrollView>
-    </View>
-  );
-}
-
-export default ProfileScreen;
+export default SettingScreen;

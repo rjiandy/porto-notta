@@ -21,6 +21,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import RegisterBankAccountScreen from '../screens/RegisterBankAccount';
 import RegisterRekeningScreen from '../screens/RegisterRekening';
+import SettingScreen from '../screens/SettingScreen';
 
 import DevScene from '../screens/DevScene'; //TODO: Remove this dev scene
 
@@ -46,6 +47,7 @@ function NottaNavigation() {
         <Scene key="registerScreen" component={RegisterScreen} title="Register" />
         <Scene key="registerBankScreen" component={RegisterBankAccountScreen} title="Register Bank Account" />
         <Scene key="registerRekening" component={RegisterRekeningScreen} title="Register Rekening" />
+        <Scene key="settingScreen" component={SettingScreen} title="Setting Screen" />
         <Scene key="dev" component={DevScene} title="Dev" />
         <Tabs
           key="mainTabs"

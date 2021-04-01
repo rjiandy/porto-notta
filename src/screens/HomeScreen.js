@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: colors.bodyWhite
   },
   cardContainer: {
     position: 'absolute',
@@ -138,25 +139,6 @@ const styles = StyleSheet.create({
   }
 });
 
-function countSumAmount(dataObj) {
-  let totalAmount = 0;
-  if (dataObj) {
-    Object.keys(dataObj).forEach((key) => {
-      const dataList = dataObj[key];
-      dataList.forEach((eachData) => {
-        const { type, amount } = eachData;
-        if (type === 'DB') {
-          totalAmount -= amount;
-        } else {
-          totalAmount += amount;
-        }
-      });
-    });
-  }
-
-  return totalAmount;
-}
-
 function countSumArr(transactions) {
   let totalAmount = 0;
   if (transactions) {
@@ -211,9 +193,10 @@ function TransactionGroup(props) {
       </View>
       <View style={styles.listTransaction}>
         {
-          transactionList.map((dataTrx) => {
+          transactionList.map((dataTrx, index) => {
             return (
               <TransactionItem
+                key={index}
                 amount={dataTrx.amount}
                 isCredit={dataTrx.type === 'CR'}
                 noRek={selectedRekening === 'Semua' ? dataTrx.no_rekening : selectedRekening}
@@ -369,10 +352,11 @@ function HomeScreen() {
             </ScrollView>
             <View style={styles.transactionListContainer}>
               {
-                Object.keys(activeTrxGroup).map((key) => {
+                Object.keys(activeTrxGroup).map((key, index) => {
                   const dataTrx = activeTrxGroup[key];
                   return (
                     <TransactionGroup
+                      key={index}
                       selectedRekening={selectedRekening}
                       sumAmount={countSumArr(dataTrx)}
                       dataDate={key}
