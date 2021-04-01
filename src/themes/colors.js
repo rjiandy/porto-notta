@@ -14,5 +14,6 @@ export default {
   cultured: '#F2F2F2',
   candyPink: '#E45C68',
   dimGray: '#676767',
-  silverChalice: '#ABABAB'
+  silverChalice: '#ABABAB',
+  grayScale: '#F0F0F0'
 };
