@@ -34,11 +34,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   barTop: {
-    marginHorizontal: 10,
+    marginHorizontal: 12,
     width: 40,
     borderWidth: 1,
-    backgroundColor: 'blue',
-    borderColor: 'blue'
+    backgroundColor: colors.carolinaBlue,
+    borderColor: colors.carolinaBlue
   },
   GroupbarBottom: {
     position: 'absolute',
@@ -54,11 +54,11 @@ const styles = StyleSheet.create({
     zIndex: 10
   },
   barBottom: {
-    marginHorizontal: 10,
+    marginHorizontal: 12,
     width: 40,
     borderWidth: 1,
-    backgroundColor: 'red',
-    borderColor: 'red'
+    backgroundColor: colors.candyPink,
+    borderColor: colors.candyPink
   },
   label: {
     flex: 1,
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
   itemLabel: {
     marginHorizontal: 10,
-    width: 40
+    width: 42
   }
 });
 

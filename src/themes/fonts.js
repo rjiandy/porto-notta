@@ -27,6 +27,10 @@ export default {
     fontSize: 14,
     color: colors.black
   },
+  'Default-14-lightGray': {
+    fontSize: 14,
+    color: colors.lightGray
+  },
   'Default-14-black-bold': {
     fontSize: 14,
     color: colors.black,

@@ -8,6 +8,7 @@ import {
   Dimensions,
   TouchableOpacity
 } from 'react-native';
+import moment from 'moment';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -186,7 +187,7 @@ function TransactionGroup(props) {
   return (
     <View style={styles.dateGroupContainer}>
       <View style={styles.dateGroupTitle}>
-        <Text style={styles.dateTitle}>{dataDate}</Text>
+        <Text style={styles.dateTitle}>{moment(dataDate).format('DD MMMM YYYY')}</Text>
         <Text style={[styles.groupAmount, isNegative && { color: colors.candyPink }]}>
           {`${isNegative ? '-' : '+'} ${formatThousand(Math.abs(sumAmount))}`}
         </Text>
