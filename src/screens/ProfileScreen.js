@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
   Image,
   StyleSheet,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  ActivityIndicator
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Actions } from 'react-native-router-flux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
   Header
@@ -17,6 +19,9 @@ import {
 import CoinImage from '../assets/coin.png';
 import fonts from '../themes/fonts';
 import colors from '../themes/colors';
+
+import getJSON from '../api/getJSON';
+import thousandSeparator from '../utils/thousandSeparator';
 
 const styles = StyleSheet.create({
   container: {
@@ -73,7 +78,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 15,
     marginRight: 12,
-    backgroundColor: 'green'
+    backgroundColor: colors.silverChalice
   },
   rowRightContent: {
     flex: 1,
@@ -97,12 +102,12 @@ const styles = StyleSheet.create({
 });
 
 function BankItem(props) {
-  const { isActive, onReactivate } = props;
+  const { isActive, onReactivate, rekeningNumber, imageUrl } = props;
   return (
     <View style={styles.rowContainer}>
       <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-        <View style={styles.imageContainer} />
-        <Text style={fonts['Default-14-black']}>21314124</Text>
+        <Image style={styles.imageContainer} source={{ uri: imageUrl }} />
+        <Text style={fonts['Default-14-black']}>{rekeningNumber}</Text>
       </View>
       <View style={styles.rowRightContent}>
         {
@@ -128,6 +133,41 @@ function BankItem(props) {
 
 function ProfileScreen() {
 
+  const [fullName, setFullName] = useState('-');
+  const [rekeningList, setRekeningList] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+  const [saldo, setSaldo] = useState(0);
+
+  useEffect(() => {
+    const getFullName = async () => {
+      const savedName = await AsyncStorage.getItem('@name');
+      if (savedName) {
+        setFullName(savedName.toUpperCase());
+      }
+    };
+    getFullName();
+  }, []);
+
+  useEffect(() => {
+    const getRekeningData = async () => {
+      setLoading(true);
+      try {
+        const result = await getJSON('/bank/account');
+        const { data } = result;
+        const { saldo: saldoRes, listRekening } = data;
+
+        setSaldo(saldoRes);
+        setRekeningList(listRekening);
+
+      } catch (err) {
+        alert('Failed To Get Rekening Data ', err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getRekeningData();
+  }, []);
+
   const onAddPress = () => {
 
   };
@@ -147,8 +187,14 @@ function ProfileScreen() {
         <View style={styles.container}>
           <Image source={CoinImage} style={styles.image} />
           <View style={styles.overview}>
-            <Text style={styles.titleText}>JOHAN GANDA WIJAYA</Text>
-            <Text style={styles.titleText}>Rp 2.378.967.988</Text>
+            <Text style={styles.titleText}>{fullName}</Text>
+            {
+              isLoading ? (
+                <ActivityIndicator size="small" color={colors.yellowGreen} />
+              ) : (
+                <Text style={styles.titleText}>{`Rp. ${thousandSeparator(saldo)}`}</Text>
+              )
+            }
           </View>
           <View style={styles.profileBtnContainer}>
             <View style={styles.buttonOverview}>
@@ -185,13 +231,21 @@ function ProfileScreen() {
               4 Rekening Terdaftar
             </Text>
             <View style={styles.bankList}>
-              <BankItem />
-              <BankItem />
-              <BankItem />
-              <BankItem />
-              <BankItem />
-              <BankItem />
-              <BankItem isActive />
+              {
+                isLoading ? (
+                  <ActivityIndicator size="large" color={colors.yellowGreen} />
+                ) : rekeningList.map((data, index) => {
+                  return (
+                    <BankItem
+                      key={index}
+                      isActive={data.active}
+                      rekeningNumber={data.no_rekening}
+                      imageUrl={data.bank_image}
+                      onReactivate
+                    />
+                  );
+                })
+              }
             </View>
           </View>
         </View>

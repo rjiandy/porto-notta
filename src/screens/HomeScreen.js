@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   },
   rekeningListContainer: {
     flex: 1,
-    marginHorizontal: 10,
+    marginHorizontal: 10
   },
 
   rekeningWrapper: {
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   rekeningLogo: {
     width: 50,
     height: 50,
-    backgroundColor: 'green',
+    backgroundColor: colors.jet,
     borderRadius: 15
   },
   rekeningAllButton: {
@@ -161,6 +161,7 @@ function RekeningButton(props) {
     onPress,
     label,
     bankCode, // TODO use for images
+    imageUrl
   } = props;
   return (
     <TouchableOpacity
@@ -173,7 +174,7 @@ function RekeningButton(props) {
             <Image source={CCIcon} style={{ width: 30, height: 25 }} />
           </View>
         ) : (
-          <View style={styles.rekeningLogo} />
+          <Image style={styles.rekeningLogo} source={{ uri: imageUrl }} />
         )
       }
       <Text style={styles.rekeningButtonNumber}>{label}</Text>
@@ -184,6 +185,7 @@ function RekeningButton(props) {
 function TransactionGroup(props) {
   const { dataDate, sumAmount, transactionList, selectedRekening } = props;
   const isNegative = sumAmount < 0;
+
   return (
     <View style={styles.dateGroupContainer}>
       <View style={styles.dateGroupTitle}>
@@ -202,6 +204,7 @@ function TransactionGroup(props) {
                 isCredit={dataTrx.type === 'CR'}
                 noRek={selectedRekening === 'Semua' ? dataTrx.no_rekening : selectedRekening}
                 desc={dataTrx.description}
+                imageUrl={dataTrx.bank_image}
               />
             );
           })
@@ -212,10 +215,10 @@ function TransactionGroup(props) {
 }
 
 function TransactionItem(props) {
-  const { isCredit, amount, desc, noRek } = props;
+  const { isCredit, amount, desc, noRek, imageUrl } = props;
   return (
     <View style={styles.transactionItem}>
-      <View style={styles.rekeningLogo} />
+      <Image style={styles.rekeningLogo} source={{ uri: imageUrl }} />
       <View style={styles.transactionDetail}>
         <View style={{ flexDirection: 'row', marginBottom: 4 }}>
           <Text style={{ flex: 1, ...fonts['Default-12-bold'] }}>{noRek}</Text>
@@ -259,11 +262,23 @@ function HomeScreen() {
         const groupedRekening = [];
 
         listRekeningRes.forEach((dataTrx) => {
+          const { mutasi } = dataTrx;
+
+          let newMutasi = {};
+          Object.keys(mutasi).forEach((key) => {
+            newMutasi[key] = mutasi[key].map((temp) => ({
+              ...temp,
+              bank_image: dataTrx.bank_image
+            }));
+          });
+
           groupedRekening.push({
             no_rekening: dataTrx.no_rekening,
             bank_code: dataTrx.bank_code,
             saldo: dataTrx.saldo,
-            transactions: dataTrx.mutasi
+            // transactions: dataTrx.mutasi,
+            transactions: newMutasi,
+            imageUrl: dataTrx.bank_image
           });
         });
 
@@ -277,7 +292,6 @@ function HomeScreen() {
         setActiveSaldo(`Rp ${thousandSeparator(saldo)}`);
         setListRekening(groupedRekening);
         setActiveTrxGroup(mutasi_all);
-
       })
       .catch((error) => {
         alert('Error Getting Home Data', error.message);
@@ -339,6 +353,7 @@ function HomeScreen() {
                         label={data.no_rekening}
                         bankCode={data.bank_code}
                         isActive={data.no_rekening === selectedRekening}
+                        imageUrl={data.imageUrl}
                         onPress={() => {
                           setSelectedRekening(data.no_rekening);
                           setActiveSaldo(`Rp ${thousandSeparator(data.saldo)}`);

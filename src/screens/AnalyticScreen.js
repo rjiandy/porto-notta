@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   rekeningLogo: {
     width: 50,
     height: 50,
-    backgroundColor: 'green',
+    backgroundColor: colors.jet,
     borderRadius: 15,
     marginRight: 12
   },
@@ -100,10 +100,10 @@ function sumAmount(arrData, type) {
 }
 
 function RekeningList(props) {
-  const { rekeningNumber, debit, credit } = props;
+  const { rekeningNumber, debit, credit, imageUrl } = props;
   return (
     <View style={styles.listItem}>
-      <View style={styles.rekeningLogo} />
+      <Image style={styles.rekeningLogo} source={{ uri: imageUrl }} />
       <Text style={fonts['Default-14-black-bold']}>{rekeningNumber}</Text>
       <View style={styles.listDetails}>
         <Text style={[fonts['Default-12'], { color: colors.yellowGreen }]}>
@@ -216,6 +216,7 @@ function AnalyticScreen() {
                     bankCode={data.bank_code}
                     credit={data.credit}
                     debit={data.debit}
+                    imageUrl={data.bank_image}
                   />
                 );
               })

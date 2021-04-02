@@ -82,7 +82,11 @@ function NottaNavigation() {
             icon={({ tintColor }) => (
               <TabIcon name="Akun" tintColor={tintColor} />
             )}
-          />
+          >
+            {/* <Stack>
+
+            </Stack> */}
+          </Scene>
         </Tabs>
       </Stack>
     </Router>
