@@ -43,32 +43,32 @@ const styles = StyleSheet.create({
   }
 });
 
+const getTabDataByKey = (key) => {
+  switch (key) {
+    case 'homeScreen': {
+      return {
+        label: 'Utama',
+        color: colors.eerieBlack
+      };
+    }
+    case 'analyticScreen': {
+      return {
+        label: 'Analisa',
+        color: colors.eerieBlack
+      };
+    }
+    case 'profileScreen': {
+      return {
+        label: 'Akun',
+        color: colors.eerieBlack
+      };
+    }
+  }
+};
+
 function CustomTabBar(props) {
   const { state } = props.navigation;
   const [activeKey, setActiveKey] = useState('homeScreen');
-
-  const getTabDataByKey = (key) => {
-    switch (key) {
-      case 'homeScreen': {
-        return {
-          label: 'Utama',
-          color: colors.eerieBlack
-        };
-      }
-      case 'analyticScreen': {
-        return {
-          label: 'Analisa',
-          color: colors.eerieBlack
-        };
-      }
-      case 'profileScreen': {
-        return {
-          label: 'Akun',
-          color: colors.eerieBlack
-        };
-      }
-    }
-  };
 
   const filteredRoutes = state.routes.filter(
     (element) => (element.key === 'homeScreen' || element.key === 'analyticScreen' || element.key === 'profileScreen')
@@ -81,6 +81,7 @@ function CustomTabBar(props) {
             <TouchableOpacity
               key={element.key}
               onPress={() => {
+                Actions.pop();
                 Actions[element.key]();
                 setActiveKey(element.key);
               }}
@@ -106,7 +107,7 @@ function NottaNavigation() {
         <Scene key="registerRekening" component={RegisterRekeningScreen} title="Register Rekening" />
         <Tabs
           key="mainTabs"
-          // tabBarPosition="bottom"
+          tabBarPosition="bottom"
           activeTintColor={colors.eerieBlack}
           inactiveTintColor={colors.grayWeb}
           tabBarStyle={styles.tabBar}

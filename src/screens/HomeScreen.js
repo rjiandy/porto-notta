@@ -269,6 +269,7 @@ function HomeScreen(props) {
         if (listRekeningRes.length <= 0) {
           setBlank(true);
         } else {
+          setBlank(false);
           listRekeningRes.forEach((dataTrx) => {
             const { mutasi } = dataTrx;
 

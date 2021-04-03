@@ -126,14 +126,13 @@ function SelectRekening(props) {
   const onRegisterRekening = async () => {
     setLoading(true);
     try {
-      const result = await patchJSON(`/bank/activate/${selectedRekeningId}`);
-      if (result) {
-        setSuccess(true);
-        triggerFetch();
-        setTimeout(() => {
-          Actions.replace('homeScreen');
-        }, 700);
-      }
+      await patchJSON(`/bank/activate/${selectedRekeningId}`);
+      setSuccess(true);
+      triggerFetch();
+      setTimeout(() => {
+        setSuccess(false);
+        Actions.replace('homeScreen');
+      }, 700);
     } catch (error) {
       alert(`Failed to activate rekening, ${error.message}`);
     } finally {

@@ -22,6 +22,7 @@ import fonts from '../themes/fonts';
 import colors from '../themes/colors';
 
 import getJSON from '../api/getJSON';
+import patchJSON from '../api/patchJSON';
 import thousandSeparator from '../utils/thousandSeparator';
 
 const styles = StyleSheet.create({
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
 });
 
 function BankItem(props) {
-  const { isActive, onReactivate, rekeningNumber, imageUrl } = props;
+  const { isActive, onReactivate, rekeningNumber, imageUrl, loading } = props;
   return (
     <View style={styles.rowContainer}>
       <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
@@ -112,11 +113,14 @@ function BankItem(props) {
       </View>
       <View style={styles.rowRightContent}>
         {
-          !isActive && (
-            <TouchableOpacity onPress={onReactivate}>
-              <Icon name="reload-outline" size={24} style={{ marginBottom: 16 }} />
-            </TouchableOpacity>
-          )
+          !isActive ?
+            loading ? (
+              <ActivityIndicator size="small" color={colors.yellowGreen} />
+            ) : (
+              <TouchableOpacity onPress={onReactivate}>
+                <Icon name="reload-outline" size={24} style={{ marginBottom: 16 }} />
+              </TouchableOpacity>
+            ) : null
         }
         <View style={styles.bankStatusContainer}>
           <View style={[styles.bankStatus, !isActive && { backgroundColor: colors.candyPink }]}>
@@ -138,6 +142,7 @@ function ProfileScreen(props) {
   const [rekeningList, setRekeningList] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [saldo, setSaldo] = useState(0);
+  const [loadingActivate, setLoadingActivate] = useState(false);
 
   useEffect(() => {
     const getFullName = async () => {
@@ -170,6 +175,7 @@ function ProfileScreen(props) {
   }, [triggerData]);
 
   const onAddPress = () => {
+    Actions.pop();
     Actions.addBankScreen();
   };
 
@@ -179,6 +185,20 @@ function ProfileScreen(props) {
 
   const onSettingPress = () => {
     Actions.settingScreen();
+  };
+
+  const onReactivatePress = async (id) => {
+    setLoadingActivate(true);
+    try {
+      const result = await patchJSON(`/bank/activate/${id}`);
+      if (result) {
+        alert('Success Activate Rekening');
+      }
+    } catch (error) {
+      alert(`Failed to activate rekening, ${error.message}`);
+    } finally {
+      setLoadingActivate(false);
+    }
   };
 
   return (
@@ -242,7 +262,8 @@ function ProfileScreen(props) {
                       isActive={data.active}
                       rekeningNumber={data.no_rekening}
                       imageUrl={data.bank_image}
-                      onReactivate
+                      onReactivate={() => onReactivatePress(data.id)}
+                      loading={loadingActivate}
                     />
                   );
                 })

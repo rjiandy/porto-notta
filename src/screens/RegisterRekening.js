@@ -140,7 +140,6 @@ function SelectRekening(props) {
     } finally {
       setLoading(false);
     }
-
   };
 
   const inactiveList = rekeningList.filter((data) => !data.active);

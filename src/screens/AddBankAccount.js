@@ -119,11 +119,13 @@ function RegisterBankAccount(props) {
       Actions.addRekeningScreen();
     } catch (err) {
       alert(`Failed, ${err.message}`);
+    } finally {
       setRegisterBankLoading(false);
     }
   };
 
   useEffect(() => {
+    console.log('inside bank effect');
     setFetchLoading(true);
     getBankList()
       .then((result) => {
@@ -163,7 +165,11 @@ function RegisterBankAccount(props) {
           <View style={styles.container}>
             <View style={styles.header}>
               <View style={{ flex: 1, flexDirection: 'row', paddingLeft: 20 }}>
-                <TouchableOpacity onPress={() => Actions.profileScreen()}>
+                <TouchableOpacity
+                  onPress={() => {
+                    Actions.profileScreen();
+                  }}
+                >
                   <Image width="30" height="22" source={LeftArrow} />
                 </TouchableOpacity>
                 <View style={{ flex: 1, alignItems: 'center' }}>

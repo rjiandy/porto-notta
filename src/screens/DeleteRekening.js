@@ -160,6 +160,7 @@ function DeleteRekeningScreen(props) {
   const [deleteModal, setDeleteModal] = useState(false);
 
   useEffect(() => {
+    console.log('use effect on delete rekning');
     const getRekeningData = async () => {
       setInitData(true);
       try {
@@ -188,15 +189,15 @@ function DeleteRekeningScreen(props) {
           triggerFetch();
           setDeleteModal(false);
           setSuccess(false);
-          Actions.profileScreen();
+          Actions.refresh('profileScreen');
         }, 700);
       }
     } catch (error) {
       alert(`Failed to activate rekening, ${error.message}`);
     } finally {
       setLoading(false);
-      setRekeningList([]);
       setRekeningId('');
+      setRekeningList([]);
     }
   };
 

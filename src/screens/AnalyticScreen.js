@@ -118,6 +118,7 @@ function AnalyticScreen(props) {
   }, []);
 
   useEffect(() => {
+    console.log('use effect on analytic');
     const getAnalyticData = async () => {
       setLoading(true);
       try {
@@ -126,7 +127,8 @@ function AnalyticScreen(props) {
         });
         const { data } = result;
         const { chart, rekening } = data;
-        console.log('data', data);
+
+        console.log(rekening);
 
         if (rekening.length <= 0) {
           setBlank(true);
@@ -159,6 +161,7 @@ function AnalyticScreen(props) {
 
     getAnalyticData();
   }, [selectedDate, triggerData]);
+
   if (isBlank) {
     return (
       <View style={{ flex: 1 }}>
