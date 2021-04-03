@@ -9,6 +9,8 @@ import {
   TouchableOpacity
 } from 'react-native';
 import moment from 'moment';
+import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -177,7 +179,9 @@ function RekeningButton(props) {
           <Image style={styles.rekeningLogo} source={{ uri: imageUrl }} />
         )
       }
-      <Text style={styles.rekeningButtonNumber}>{label}</Text>
+      <Text style={styles.rekeningButtonNumber}>
+        {label !== 'Semua' ? label.slice(label.length - 4, label.length) : label}
+      </Text>
     </TouchableOpacity>
   );
 }
@@ -234,7 +238,9 @@ function TransactionItem(props) {
   );
 }
 
-function HomeScreen() {
+function HomeScreen(props) {
+  const { triggerData } = props;
+
   const [isBlank, setBlank] = useState(false);
   const [isLoading, setLoading] = useState(false);
 
@@ -260,36 +266,40 @@ function HomeScreen() {
 
         const groupedRekening = [];
 
-        listRekeningRes.forEach((dataTrx) => {
-          const { mutasi } = dataTrx;
+        if (listRekeningRes.length <= 0) {
+          setBlank(true);
+        } else {
+          listRekeningRes.forEach((dataTrx) => {
+            const { mutasi } = dataTrx;
 
-          let newMutasi = {};
-          Object.keys(mutasi).forEach((key) => {
-            newMutasi[key] = mutasi[key].map((temp) => ({
-              ...temp,
-              bank_image: dataTrx.bank_image
-            }));
+            let newMutasi = {};
+            Object.keys(mutasi).forEach((key) => {
+              newMutasi[key] = mutasi[key].map((temp) => ({
+                ...temp,
+                bank_image: dataTrx.bank_image
+              }));
+            });
+
+            groupedRekening.push({
+              no_rekening: dataTrx.no_rekening,
+              bank_code: dataTrx.bank_code,
+              saldo: dataTrx.saldo,
+              transactions: newMutasi,
+              imageUrl: dataTrx.bank_image
+            });
           });
 
           groupedRekening.push({
-            no_rekening: dataTrx.no_rekening,
-            bank_code: dataTrx.bank_code,
-            saldo: dataTrx.saldo,
-            transactions: newMutasi,
-            imageUrl: dataTrx.bank_image
+            no_rekening: 'Semua',
+            bank_code: 'Semua',
+            saldo,
+            transactions: mutasi_all
           });
-        });
 
-        groupedRekening.push({
-          no_rekening: 'Semua',
-          bank_code: 'Semua',
-          saldo,
-          transactions: mutasi_all
-        });
-
-        setActiveSaldo(`Rp ${thousandSeparator(saldo)}`);
-        setListRekening(groupedRekening);
-        setActiveTrxGroup(mutasi_all);
+          setActiveSaldo(`Rp ${thousandSeparator(saldo)}`);
+          setListRekening(groupedRekening);
+          setActiveTrxGroup(mutasi_all);
+        }
       })
       .catch((error) => {
         alert('Error Getting Home Data', error.message);
@@ -298,7 +308,7 @@ function HomeScreen() {
         setLoading(false);
       });
 
-  }, []);
+  }, [triggerData]);
 
   if (isLoading) {
     return (
@@ -316,7 +326,7 @@ function HomeScreen() {
           label="Kamu Tidak Memiliki Rekening yang Terhubung, Silahkan Tambahkan Rekening"
           buttonLabel="Tambah"
           onPress={() => {
-            alert('Navigate to Add Rekening');
+            Actions.addBankScreen();
           }}
         />
       </View>
@@ -387,4 +397,11 @@ function HomeScreen() {
   }
 }
 
-export default HomeScreen;
+function mapStateToProps(state) {
+  const { triggerStore } = state;
+  return {
+    triggerData: triggerStore.triggerNewData
+  };
+}
+
+export default connect(mapStateToProps)(HomeScreen);

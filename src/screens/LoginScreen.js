@@ -22,7 +22,8 @@ import PasswordIcon from '../assets/password_icon.svg';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    paddingTop: 40
   },
   header: {
     marginTop: 40,

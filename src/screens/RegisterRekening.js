@@ -23,7 +23,8 @@ import { Success } from '../components';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    paddingTop: 40
   },
   header: {
     marginTop: 40,
@@ -130,6 +131,7 @@ function SelectRekening(props) {
       if (result) {
         setSuccess(true);
         setTimeout(() => {
+          setSuccess(false);
           Actions.replace('homeScreen');
         }, 700);
       }

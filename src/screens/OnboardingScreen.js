@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   image: {
-    height: windowHeight * 0.7,
+    height: windowHeight * 0.75,
     width: '100%',
     marginBottom: 24
   }

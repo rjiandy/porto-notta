@@ -55,7 +55,6 @@ function BankRowItem(props) {
 
 function BankOptions(props) {
   const { onSelectBank, data } = props;
-  console.log('bank data', data);
   return (
     <Modal
       presentationStyle="overFullScreen"

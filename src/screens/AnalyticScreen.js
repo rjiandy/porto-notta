@@ -8,12 +8,15 @@ import {
   ActivityIndicator,
   Image
 } from 'react-native';
+import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 
 import moment from 'moment';
 
 import {
   Charts,
-  Header
+  Header,
+  Blank
 } from '../components';
 
 import colors from '../themes/colors';
@@ -41,7 +44,8 @@ const styles = StyleSheet.create({
   },
   listItem: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 20
   },
   rekeningLogo: {
     width: 50,
@@ -64,29 +68,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14
   }
 });
-
-const chartMock = [
-  {
-    'credit': 47,
-    'debit': 20
-  },
-  {
-    'credit': 0,
-    'debit': 10
-  },
-  {
-    'credit': 20,
-    'debit': 20
-  },
-  {
-    'credit': 30,
-    'debit': 10
-  },
-  {
-    'credit': 90,
-    'debit': 40
-  }
-];
 
 function sumAmount(arrData, type) {
   let totalAmount = 0;
@@ -118,13 +99,15 @@ function RekeningList(props) {
   );
 }
 
-function AnalyticScreen() {
+function AnalyticScreen(props) {
+  const { triggerData } = props;
   const [selectedDate, setSelectedDate] = useState(moment().format('YYYY-MM'));
   const [monthsRange, setMonthsRange] = useState([]);
 
-  const [chartData, setChartData] = useState(chartMock);
+  const [chartData, setChartData] = useState([]);
   const [transactions, setTransactions] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [isBlank, setBlank] = useState(false);
 
   useEffect(() => {
     const tempMonths = [];
@@ -143,24 +126,29 @@ function AnalyticScreen() {
         });
         const { data } = result;
         const { chart, rekening } = data;
+        console.log('data', data);
 
-        const chartDataList = [];
+        if (rekening.length <= 0) {
+          setBlank(true);
+        } else {
+          const chartDataList = [];
 
-        const arrNumbers = [];
-        Object.keys(chart).forEach((key) => {
-          arrNumbers.push(chart[key].debit);
-          arrNumbers.push(chart[key].credit);
-        });
-
-        const highestNum = Math.max(...arrNumbers);
-        Object.keys(chart).forEach((key) => {
-          chartDataList.push({
-            debit: (chart[key].debit / highestNum) * 100,
-            credit: (chart[key].credit / highestNum) * 100
+          const arrNumbers = [];
+          Object.keys(chart).forEach((key) => {
+            arrNumbers.push(chart[key].debit);
+            arrNumbers.push(chart[key].credit);
           });
-        });
-        setChartData(chartDataList);
-        setTransactions(rekening);
+
+          const highestNum = Math.max(...arrNumbers);
+          Object.keys(chart).forEach((key) => {
+            chartDataList.push({
+              debit: (chart[key].debit / highestNum) * 100,
+              credit: (chart[key].credit / highestNum) * 100
+            });
+          });
+          setChartData(chartDataList);
+          setTransactions(rekening);
+        }
 
       } catch (err) {
         alert('Error Getting Analytics Data ', err.message);
@@ -170,76 +158,97 @@ function AnalyticScreen() {
     };
 
     getAnalyticData();
-  }, [selectedDate]);
-
-  return (
-    <View style={{ flex: 1, backgroundColor: colors.bodyWhite }}>
-      <Header />
-      <ScrollView style={{ flex: 1 }}>
-        <ScrollView horizontal style={{ minHeight: 60, backgroundColor: colors.white }}>
-          {
-            monthsRange.map((data, index) => {
-              return (
-                <TouchableOpacity
-                  style={styles.monthButton}
-                  key={index}
-                  onPress={() => setSelectedDate(data)}
-                >
-                  <Text
-                    style={[styles.monthText, data === selectedDate && fonts['Default-14-black-bold']]}
-                  >
-                    {moment(data).format('MMMM YYYY')}
-                  </Text>
-                </TouchableOpacity>
-              );
-            })
-          }
-        </ScrollView>
-        <Charts
-          data={chartData}
-          lastDay={moment(selectedDate).endOf('month').format('DD')}
+  }, [selectedDate, triggerData]);
+  if (isBlank) {
+    return (
+      <View style={{ flex: 1 }}>
+        <Header />
+        <Blank
+          label="Kamu Tidak Memiliki Rekening yang Terhubung, Silahkan Tambahkan Rekening"
+          buttonLabel="Tambah"
+          onPress={() => {
+            Actions.addBankScreen();
+          }}
         />
-        <View style={styles.mutationContainer}>
-          <View style={{ borderBottomWidth: 1, borderColor: colors.black, paddingBottom: 14 }}>
-            <Text style={[fonts['Default-14-black-bold'], { marginLeft: 14 }]}>
-              Rekening
-            </Text>
-          </View>
-          <View style={styles.listContainer}>
+      </View>
+    );
+  } else {
+    return (
+      <View style={{ flex: 1, backgroundColor: colors.bodyWhite }}>
+        <Header />
+        <ScrollView style={{ flex: 1 }}>
+          <ScrollView horizontal style={{ minHeight: 60, backgroundColor: colors.white }}>
             {
-              isLoading ? (
-                <ActivityIndicator size="large" color={colors.yellowGreen} />
-              ) : transactions.map((data, index) => {
+              monthsRange.map((data, index) => {
                 return (
-                  <RekeningList
+                  <TouchableOpacity
+                    style={styles.monthButton}
                     key={index}
-                    rekeningNumber={data.no_rekening}
-                    bankCode={data.bank_code}
-                    credit={data.credit}
-                    debit={data.debit}
-                    imageUrl={data.bank_image}
-                  />
+                    onPress={() => setSelectedDate(data)}
+                  >
+                    <Text
+                      style={[styles.monthText, data === selectedDate && fonts['Default-14-black-bold']]}
+                    >
+                      {moment(data).format('MMMM YYYY')}
+                    </Text>
+                  </TouchableOpacity>
                 );
               })
             }
+          </ScrollView>
+          <Charts
+            data={chartData}
+            lastDay={moment(selectedDate).endOf('month').format('DD')}
+          />
+          <View style={styles.mutationContainer}>
+            <View style={{ borderBottomWidth: 1, borderColor: colors.black, paddingBottom: 14 }}>
+              <Text style={[fonts['Default-14-black-bold'], { marginLeft: 14 }]}>
+                Rekening
+              </Text>
+            </View>
+            <View style={styles.listContainer}>
+              {
+                isLoading ? (
+                  <ActivityIndicator size="large" color={colors.yellowGreen} />
+                ) : transactions.map((data, index) => {
+                  return (
+                    <RekeningList
+                      key={index}
+                      rekeningNumber={data.no_rekening}
+                      bankCode={data.bank_code}
+                      credit={data.credit}
+                      debit={data.debit}
+                      imageUrl={data.bank_image}
+                    />
+                  );
+                })
+              }
+            </View>
           </View>
-        </View>
-        <View style={styles.sumContainer}>
-          <Text style={[fonts['Default-18'], { marginLeft: 14 }]}>
-            Total
-          </Text>
-          <View style={{ flex: 1, alignItems: 'flex-end' }}>
-            <Text style={[fonts['Default-14-black-bold'], { color: colors.yellowGreen, marginBottom: 14 }]}>
-              {`+ ${sumAmount(transactions, 'credit')}`}
+          <View style={styles.sumContainer}>
+            <Text style={[fonts['Default-18'], { marginLeft: 14 }]}>
+              Total
             </Text>
-            <Text style={[fonts['Default-14-black-bold'], { color: colors.candyPink }]}>
-              {`- ${sumAmount(transactions, 'debit')}`}
-            </Text>
+            <View style={{ flex: 1, alignItems: 'flex-end' }}>
+              <Text style={[fonts['Default-14-black-bold'], { color: colors.yellowGreen, marginBottom: 14 }]}>
+                {`+ ${sumAmount(transactions, 'credit')}`}
+              </Text>
+              <Text style={[fonts['Default-14-black-bold'], { color: colors.candyPink }]}>
+                {`- ${sumAmount(transactions, 'debit')}`}
+              </Text>
+            </View>
           </View>
-        </View>
-      </ScrollView>
-    </View>
-  );
+        </ScrollView>
+      </View>
+    );
+  }
 }
 
-export default AnalyticScreen;
+function mapStateToProps(state) {
+  const { triggerStore } = state;
+  return {
+    triggerData: triggerStore.triggerNewData
+  };
+}
+
+export default connect(mapStateToProps)(AnalyticScreen);

@@ -116,7 +116,7 @@ function RegisterBankAccount(props) {
       if (result) {
         addRekeningList(result);
       }
-      Actions.registerRekening();
+      Actions.addRekeningScreen();
     } catch (err) {
       alert(`Failed, ${err.message}`);
       setRegisterBankLoading(false);

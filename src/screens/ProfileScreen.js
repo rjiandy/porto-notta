@@ -11,6 +11,7 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Actions } from 'react-native-router-flux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { connect } from 'react-redux';
 
 import {
   Header
@@ -131,8 +132,8 @@ function BankItem(props) {
 }
 
 
-function ProfileScreen() {
-
+function ProfileScreen(props) {
+  const { triggerData } = props;
   const [fullName, setFullName] = useState('-');
   const [rekeningList, setRekeningList] = useState([]);
   const [isLoading, setLoading] = useState(false);
@@ -166,7 +167,7 @@ function ProfileScreen() {
       }
     };
     getRekeningData();
-  }, []);
+  }, [triggerData]);
 
   const onAddPress = () => {
     Actions.addBankScreen();
@@ -228,7 +229,7 @@ function ProfileScreen() {
           <View style={styles.profileDetailContainer}>
             <Text style={fonts['Default-14-black']}>Daftar Rekening</Text>
             <Text style={[fonts['Default-12'], { marginTop: 4 }]}>
-              4 Rekening Terdaftar
+              {`${rekeningList.length} Rekening Terdaftar`}
             </Text>
             <View style={styles.bankList}>
               {
@@ -254,4 +255,11 @@ function ProfileScreen() {
   );
 }
 
-export default ProfileScreen;
+function mapStateToProps(state) {
+  const { triggerStore } = state;
+  return {
+    triggerData: triggerStore.triggerNewData
+  };
+}
+
+export default connect(mapStateToProps)(ProfileScreen);

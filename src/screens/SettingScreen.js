@@ -145,7 +145,7 @@ function SettingScreen() {
         <Header />
         <View style={styles.header}>
           <View style={{ flex: 1, flexDirection: 'row', paddingLeft: 20 }}>
-            <TouchableOpacity onPress={() => Actions.pop()}>
+            <TouchableOpacity onPress={() => Actions.profileScreen()}>
               <Image width="30" height="22" source={LeftArrow} />
             </TouchableOpacity>
             <View style={{ flex: 1, alignItems: 'center' }}>

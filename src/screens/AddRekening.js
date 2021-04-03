@@ -117,7 +117,7 @@ function RekeningItem(props) {
 }
 
 function SelectRekening(props) {
-  const { rekeningList, bankImage } = props;
+  const { rekeningList, bankImage, triggerFetch } = props;
 
   const [selectedRekeningId, setRekeningId] = useState('');
   const [isLoading, setLoading] = useState(false);
@@ -129,6 +129,7 @@ function SelectRekening(props) {
       const result = await patchJSON(`/bank/activate/${selectedRekeningId}`);
       if (result) {
         setSuccess(true);
+        triggerFetch();
         setTimeout(() => {
           Actions.replace('homeScreen');
         }, 700);
@@ -170,13 +171,14 @@ function SelectRekening(props) {
                   <Text style={fonts['Default-18']}>Rekening</Text>
                 </View>
                 {
-                  inactiveList.map((data) => {
+                  inactiveList.map((data, index) => {
                     return (
                       <RekeningItem
                         rekeningNumber={data.no_rekening}
                         isChecked={selectedRekeningId === data.id}
                         onPress={() => setRekeningId(data.id)}
                         imageUrl={bankImage}
+                        key={index}
                       />
                     );
                   })
@@ -213,4 +215,14 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(SelectRekening);
+function mapDispatchToProps(dispatch) {
+  return {
+    triggerFetch: () => {
+      dispatch({
+        type: 'GET_NEW_DATA'
+      });
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectRekening);

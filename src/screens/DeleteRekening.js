@@ -10,6 +10,8 @@ import {
   Modal
 } from 'react-native';
 
+import { connect } from 'react-redux';
+
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -148,6 +150,8 @@ function RekeningItem(props) {
 }
 
 function DeleteRekeningScreen(props) {
+  const { triggerFetch } = props;
+
   const [rekeningList, setRekeningList] = useState([]);
   const [selectedRekeningId, setRekeningId] = useState('');
   const [isLoading, setLoading] = useState(false);
@@ -181,6 +185,9 @@ function DeleteRekeningScreen(props) {
       if (result) {
         setSuccess(true);
         setTimeout(() => {
+          triggerFetch();
+          setDeleteModal(false);
+          setSuccess(false);
           Actions.profileScreen();
         }, 700);
       }
@@ -188,6 +195,8 @@ function DeleteRekeningScreen(props) {
       alert(`Failed to activate rekening, ${error.message}`);
     } finally {
       setLoading(false);
+      setRekeningList([]);
+      setRekeningId('');
     }
   };
 
@@ -297,4 +306,14 @@ function DeleteRekeningScreen(props) {
   }
 }
 
-export default DeleteRekeningScreen;
+function mapDispatchToProps(dispatch) {
+  return {
+    triggerFetch: () => {
+      dispatch({
+        type: 'GET_NEW_DATA'
+      });
+    }
+  };
+}
+
+export default connect(null, mapDispatchToProps)(DeleteRekeningScreen);
