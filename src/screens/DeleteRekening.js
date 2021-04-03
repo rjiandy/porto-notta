@@ -17,7 +17,7 @@ import colors from '../themes/colors';
 import fonts from '../themes/fonts';
 
 import LeftArrow from '../assets/left_icon.png';
-import patchJSON from '../api/patchJSON';
+import deleteJSON from '../api/deleteJSON';
 import getJSON from '../api/getJSON';
 
 import { Success, Header } from '../components';
@@ -177,7 +177,7 @@ function DeleteRekeningScreen(props) {
   const onDeleteRekening = async () => {
     setLoading(true);
     try {
-      const result = await patchJSON(`/bank/activate/${selectedRekeningId}`);
+      const result = await deleteJSON(`/bank/account/${selectedRekeningId}`);
       if (result) {
         setSuccess(true);
         setTimeout(() => {
@@ -261,9 +261,10 @@ function DeleteRekeningScreen(props) {
                 {
                   isInitData ? (
                     <ActivityIndicator size="large" color={colors.yellowGreen} />
-                  ) : activeList.map((data) => {
+                  ) : activeList.map((data, index) => {
                     return (
                       <RekeningItem
+                        key={index}
                         rekeningNumber={data.no_rekening}
                         isChecked={selectedRekeningId === data.id}
                         onPress={() => setRekeningId(data.id)}

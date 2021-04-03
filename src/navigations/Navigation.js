@@ -141,7 +141,6 @@ function NottaNavigation() {
           <Scene key="addBankScreen" component={AddBankAccount} title="Add Bank Account" />
           <Scene key="addRekeningScreen" component={AddRekening} title="Add Rekening" />
           <Scene key="deleteRekeningScreen" component={DeleteRekeningScreen} title="Delete Rekening" />
-
         </Tabs>
       </Stack>
     </Router>
