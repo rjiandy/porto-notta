@@ -169,11 +169,11 @@ function ProfileScreen() {
   }, []);
 
   const onAddPress = () => {
-
+    Actions.addBankScreen();
   };
 
   const onEditPress = () => {
-
+    Actions.deleteRekeningScreen();
   };
 
   const onSettingPress = () => {
@@ -181,7 +181,7 @@ function ProfileScreen() {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: colors.bodyWhite }}>
       <Header />
       <ScrollView style={{ flex: 1 }}>
         <View style={styles.container}>

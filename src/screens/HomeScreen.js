@@ -256,7 +256,6 @@ function HomeScreen() {
     getHomeData()
       .then((result) => {
         const { data } = result;
-
         const { listRekening: listRekeningRes, mutasi_all, saldo } = data;
 
         const groupedRekening = [];
@@ -276,7 +275,6 @@ function HomeScreen() {
             no_rekening: dataTrx.no_rekening,
             bank_code: dataTrx.bank_code,
             saldo: dataTrx.saldo,
-            // transactions: dataTrx.mutasi,
             transactions: newMutasi,
             imageUrl: dataTrx.bank_image
           });
@@ -325,7 +323,7 @@ function HomeScreen() {
     );
   } else {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: colors.bodyWhite }}>
         <Header />
         <ScrollView>
           <View style={styles.container}>

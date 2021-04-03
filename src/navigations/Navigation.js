@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Router,
   Stack,
   Scene,
-  Tabs
+  Tabs,
+  Actions
 } from 'react-native-router-flux';
 import {
-  StyleSheet
+  StyleSheet,
+  View,
+  TouchableOpacity
 } from 'react-native';
 
 
@@ -22,8 +25,9 @@ import RegisterScreen from '../screens/RegisterScreen';
 import RegisterBankAccountScreen from '../screens/RegisterBankAccount';
 import RegisterRekeningScreen from '../screens/RegisterRekening';
 import SettingScreen from '../screens/SettingScreen';
-
-import DevScene from '../screens/DevScene'; //TODO: Remove this dev scene
+import AddBankAccount from '../screens/AddBankAccount';
+import AddRekening from '../screens/AddRekening';
+import DeleteRekeningScreen from '../screens/DeleteRekening';
 
 import TabIcon from './TabIcon';
 
@@ -31,11 +35,63 @@ const styles = StyleSheet.create({
   tabBar: {
     height: 88,
     paddingTop: 11,
-    borderTopWidth: 0,
     elevation: 8,
-    backgroundColor: colors.white
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center'
   }
 });
+
+function CustomTabBar(props) {
+  const { state } = props.navigation;
+  const [activeKey, setActiveKey] = useState('homeScreen');
+
+  const getTabDataByKey = (key) => {
+    switch (key) {
+      case 'homeScreen': {
+        return {
+          label: 'Utama',
+          color: colors.eerieBlack
+        };
+      }
+      case 'analyticScreen': {
+        return {
+          label: 'Analisa',
+          color: colors.eerieBlack
+        };
+      }
+      case 'profileScreen': {
+        return {
+          label: 'Akun',
+          color: colors.eerieBlack
+        };
+      }
+    }
+  };
+
+  const filteredRoutes = state.routes.filter(
+    (element) => (element.key === 'homeScreen' || element.key === 'analyticScreen' || element.key === 'profileScreen')
+  );
+  return (
+    <View style={styles.tabBar}>
+      {
+        filteredRoutes.map(element => {
+          return (
+            <TouchableOpacity
+              key={element.key}
+              onPress={() => {
+                Actions[element.key]();
+                setActiveKey(element.key);
+              }}
+            >
+              <TabIcon name={getTabDataByKey(element.key).label} active={element.key === activeKey} />
+            </TouchableOpacity>
+          );
+        })
+      }
+    </View>
+  );
+}
 
 function NottaNavigation() {
   return (
@@ -48,16 +104,15 @@ function NottaNavigation() {
         <Scene key="registerBankScreen" component={RegisterBankAccountScreen} title="Register Bank Account" />
         <Scene key="registerRekening" component={RegisterRekeningScreen} title="Register Rekening" />
         <Scene key="settingScreen" component={SettingScreen} title="Setting Screen" />
-        <Scene key="dev" component={DevScene} title="Dev" />
         <Tabs
           key="mainTabs"
-          tabBarPosition="bottom"
+          // tabBarPosition="bottom"
           activeTintColor={colors.eerieBlack}
           inactiveTintColor={colors.grayWeb}
           tabBarStyle={styles.tabBar}
-          type="replace"
           lazy
           showLabel={false}
+          tabBarComponent={CustomTabBar}
         >
           <Scene
             key="homeScreen"
@@ -82,11 +137,11 @@ function NottaNavigation() {
             icon={({ tintColor }) => (
               <TabIcon name="Akun" tintColor={tintColor} />
             )}
-          >
-            {/* <Stack>
+          />
+          <Scene key="addBankScreen" component={AddBankAccount} title="Add Bank Account" />
+          <Scene key="addRekeningScreen" component={AddRekening} title="Add Rekening" />
+          <Scene key="deleteRekeningScreen" component={DeleteRekeningScreen} title="Delete Rekening" />
 
-            </Stack> */}
-          </Scene>
         </Tabs>
       </Stack>
     </Router>

@@ -1,6 +1,12 @@
 const initialState = {
   rekeningList: [],
-  registerBankPayload: {}
+  registerBankPayload: {
+    data: {
+      bank: {
+        bank_image: ''
+      }
+    }
+  }
 };
 
 export default function registerReducer(state = initialState, action) {

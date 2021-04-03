@@ -19,14 +19,14 @@ import fonts from '../themes/fonts';
 import LeftArrow from '../assets/left_icon.png';
 import patchJSON from '../api/patchJSON';
 
-import { Success } from '../components';
+import { Success, Header } from '../components';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1
   },
   header: {
-    marginTop: 40,
+    marginTop: 20,
     flexDirection: 'row',
     justifyContent: 'center'
   },
@@ -150,54 +150,57 @@ function SelectRekening(props) {
     );
   } else {
     return (
-      <ScrollView style={{ flex: 1, backgroundColor: colors.bodyWhite }}>
-        <View style={styles.container}>
-          <View style={styles.header}>
-            <View style={{ flex: 1, flexDirection: 'row', paddingLeft: 20 }}>
-              <TouchableOpacity onPress={() => Actions.pop()}>
-                <Image width="30" height="22" source={LeftArrow} />
-              </TouchableOpacity>
-              <Text style={[fonts['Default-14-black'], { textAlign: 'center', flex: 1 }]}>
-                Pilih rekening yang ingin ditambahkan. Anda bisa memilih lebih dari satu rekening
-              </Text>
-            </View>
-          </View>
-          <View style={styles.body}>
-            <View style={styles.mainBox}>
-              <View style={styles.headerBox}>
-                <Text style={fonts['Default-18']}>Rekening</Text>
+      <View style={{ flex: 1 }}>
+        <Header />
+        <ScrollView style={{ flex: 1, backgroundColor: colors.bodyWhite }}>
+          <View style={styles.container}>
+            <View style={styles.header}>
+              <View style={{ flex: 1, flexDirection: 'row', paddingLeft: 20 }}>
+                <TouchableOpacity onPress={() => Actions.pop()}>
+                  <Image width="30" height="22" source={LeftArrow} />
+                </TouchableOpacity>
+                <Text style={[fonts['Default-14-black'], { textAlign: 'center', flex: 1 }]}>
+                  Pilih rekening yang ingin ditambahkan. Anda bisa memilih lebih dari satu rekening
+                </Text>
               </View>
-              {
-                inactiveList.map((data) => {
-                  return (
-                    <RekeningItem
-                      rekeningNumber={data.no_rekening}
-                      isChecked={selectedRekeningId === data.id}
-                      onPress={() => setRekeningId(data.id)}
-                      imageUrl={bankImage}
-                    />
-                  );
-                })
-              }
+            </View>
+            <View style={styles.body}>
+              <View style={styles.mainBox}>
+                <View style={styles.headerBox}>
+                  <Text style={fonts['Default-18']}>Rekening</Text>
+                </View>
+                {
+                  inactiveList.map((data) => {
+                    return (
+                      <RekeningItem
+                        rekeningNumber={data.no_rekening}
+                        isChecked={selectedRekeningId === data.id}
+                        onPress={() => setRekeningId(data.id)}
+                        imageUrl={bankImage}
+                      />
+                    );
+                  })
+                }
+              </View>
+            </View>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity
+                style={[styles.button, { backgroundColor: colors.yellowGreen }]}
+                onPress={onRegisterRekening}
+                disabled={isLoading || !selectedRekeningId}
+              >
+                {
+                  isLoading ? (
+                    <ActivityIndicator size="small" color={colors.white} />
+                  ) : (
+                    <Text style={fonts['Default-14-white-bold']}>Daftar</Text>
+                  )
+                }
+              </TouchableOpacity>
             </View>
           </View>
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity
-              style={[styles.button, { backgroundColor: colors.yellowGreen }]}
-              onPress={onRegisterRekening}
-              disabled={isLoading || !selectedRekeningId}
-            >
-              {
-                isLoading ? (
-                  <ActivityIndicator size="small" color={colors.white} />
-                ) : (
-                  <Text style={fonts['Default-14-white-bold']}>Daftar</Text>
-                )
-              }
-            </TouchableOpacity>
-          </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     );
   }
 }

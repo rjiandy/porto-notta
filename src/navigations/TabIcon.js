@@ -11,7 +11,6 @@ import AnalyticActive from '../assets/analytic_active.svg';
 import AccountActive from '../assets/account_active.svg';
 import AccountInactive from '../assets/account_inactive.svg';
 
-import colors from '../themes/colors';
 import fonts from '../themes/fonts';
 
 const styles = StyleSheet.create({
@@ -48,8 +47,8 @@ function getImage({ name, active }) {
 }
 
 function TabIcon(props) {
-  const { tintColor, name } = props;
-  let Image = getImage({ name, active: tintColor === colors.eerieBlack });
+  const { tintColor, name, active } = props;
+  let Image = getImage({ name, active });
   return (
     <View style={styles.container}>
       <Image width={26} height={26} />
