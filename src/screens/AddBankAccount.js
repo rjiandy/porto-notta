@@ -125,7 +125,6 @@ function RegisterBankAccount(props) {
   };
 
   useEffect(() => {
-    console.log('inside bank effect');
     const fetchBank = async () => {
       setFetchLoading(true);
       try {

@@ -153,15 +153,15 @@ function RekeningItem(props) {
 function DeleteRekeningScreen(props) {
   const { triggerFetch } = props;
 
+  const [selectedList, setSelectedList] = useState([]);
   const [rekeningList, setRekeningList] = useState([]);
-  const [selectedRekeningId, setRekeningId] = useState('');
   const [isLoading, setLoading] = useState(false);
   const [isSuccess, setSuccess] = useState(false);
   const [isInitData, setInitData] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
 
+
   useEffect(() => {
-    console.log('use effect on delete rekning');
     const getRekeningData = async () => {
       setInitData(true);
       try {
@@ -183,12 +183,18 @@ function DeleteRekeningScreen(props) {
   const onDeleteRekening = async () => {
     setLoading(true);
     try {
-      const result = await deleteJSON(`/bank/account/${selectedRekeningId}`);
-      if (result) {
+      const arrDelete = [];
+      selectedList.forEach((selectedRek) => {
+        arrDelete.push(deleteJSON(`/bank/account/${selectedRek}`));
+      });
+
+      const bulkResult = await Promise.all(arrDelete);
+      if (bulkResult.length > 0) {
+        const newRekeningList = rekeningList.filter((data) => !selectedList.includes(data.id));
+
+        setSelectedList([]);
         setSuccess(true);
-        const filtered = rekeningList.filter((data) => data.id !== selectedRekeningId);
-        setRekeningId('');
-        setRekeningList(filtered);
+        setRekeningList(newRekeningList);
         setTimeout(() => {
           triggerFetch();
           setDeleteModal(false);
@@ -278,8 +284,16 @@ function DeleteRekeningScreen(props) {
                       <RekeningItem
                         key={index}
                         rekeningNumber={data.no_rekening}
-                        isChecked={selectedRekeningId === data.id}
-                        onPress={() => setRekeningId(data.id)}
+                        // isChecked={selectedRekeningId === data.id}
+                        // onPress={() => setRekeningId(data.id)}
+                        isChecked={selectedList.includes(data.id)}
+                        onPress={() => {
+                          if (selectedList.includes(data.id)) {
+                            setSelectedList(selectedList.filter((id) => id !== data.id));
+                          } else {
+                            setSelectedList([...selectedList, data.id]);
+                          }
+                        }}
                         imageUrl={data.bank_image}
                       />
                     );
@@ -291,7 +305,7 @@ function DeleteRekeningScreen(props) {
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: colors.candyPink }]}
                 onPress={() => setDeleteModal(true)}
-                disabled={isInitData || isLoading || !selectedRekeningId}
+                disabled={isInitData || isLoading || selectedList.length <= 0}
               >
                 {
                   isLoading ? (
