@@ -6,7 +6,8 @@ import {
   Image,
   ScrollView,
   Dimensions,
-  TouchableOpacity
+  TouchableOpacity,
+  RefreshControl
 } from 'react-native';
 import moment from 'moment';
 import { connect } from 'react-redux';
@@ -243,66 +244,64 @@ function HomeScreen(props) {
 
   const [isBlank, setBlank] = useState(false);
   const [isLoading, setLoading] = useState(true);
-
   const [selectedRekening, setSelectedRekening] = useState('Semua');
   const [activeSaldo, setActiveSaldo] = useState('-');
   const [username, setUsername] = useState('-');
-
   const [listRekening, setListRekening] = useState([]);
-
   const [activeTrxGroup, setActiveTrxGroup] = useState({});
+  const [refreshing, setRefreshing] = useState(false);
 
-  useEffect(() => {
-    const fetchHome = async () => {
-      setLoading(true);
-      try {
-        const result = await getHomeData();
-        const { data } = result;
-        const { listRekening: listRekeningRes, mutasi_all, saldo } = data;
-        const groupedRekening = [];
+  const fetchHome = async () => {
+    setLoading(true);
+    try {
+      const result = await getHomeData();
+      const { data } = result;
+      const { listRekening: listRekeningRes, mutasi_all, saldo } = data;
+      const groupedRekening = [];
 
-        if (listRekeningRes.length <= 0) {
-          setBlank(true);
-        } else {
-          setBlank(false);
-          listRekeningRes.forEach((dataTrx) => {
-            const { mutasi } = dataTrx;
+      if (listRekeningRes.length <= 0) {
+        setBlank(true);
+      } else {
+        setBlank(false);
+        listRekeningRes.forEach((dataTrx) => {
+          const { mutasi } = dataTrx;
 
-            let newMutasi = {};
-            Object.keys(mutasi).forEach((key) => {
-              newMutasi[key] = mutasi[key].map((temp) => ({
-                ...temp,
-                bank_image: dataTrx.bank_image
-              }));
-            });
-
-            groupedRekening.push({
-              no_rekening: dataTrx.no_rekening,
-              bank_code: dataTrx.bank_code,
-              saldo: dataTrx.saldo,
-              transactions: newMutasi,
-              imageUrl: dataTrx.bank_image
-            });
+          let newMutasi = {};
+          Object.keys(mutasi).forEach((key) => {
+            newMutasi[key] = mutasi[key].map((temp) => ({
+              ...temp,
+              bank_image: dataTrx.bank_image
+            }));
           });
 
           groupedRekening.push({
-            no_rekening: 'Semua',
-            bank_code: 'Semua',
-            saldo,
-            transactions: mutasi_all
+            no_rekening: dataTrx.no_rekening,
+            bank_code: dataTrx.bank_code,
+            saldo: dataTrx.saldo,
+            transactions: newMutasi,
+            imageUrl: dataTrx.bank_image
           });
+        });
 
-          setActiveSaldo(`Rp ${thousandSeparator(saldo)}`);
-          setListRekening(groupedRekening);
-          setActiveTrxGroup(mutasi_all);
-        }
-      } catch (error) {
-        alert('Error Getting Home Data', error.message);
-      } finally {
-        setLoading(false);
+        groupedRekening.push({
+          no_rekening: 'Semua',
+          bank_code: 'Semua',
+          saldo,
+          transactions: mutasi_all
+        });
+
+        setActiveSaldo(`Rp ${thousandSeparator(saldo)}`);
+        setListRekening(groupedRekening);
+        setActiveTrxGroup(mutasi_all);
       }
-    };
+    } catch (error) {
+      alert('Error Getting Home Data', error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     AsyncStorage.getItem('@name').then((name) => {
       setUsername(name.toUpperCase());
     });
@@ -336,7 +335,17 @@ function HomeScreen(props) {
     return (
       <View style={{ flex: 1, backgroundColor: colors.bodyWhite }}>
         <Header />
-        <ScrollView>
+        <ScrollView
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={() => {
+                setRefreshing(true);
+                fetchHome().then(() => setRefreshing(false));
+              }}
+            />
+          }
+        >
           <View style={styles.container}>
             <View style={styles.overview}>
               <Image source={GreyCard} style={styles.mainCard} />

@@ -22,11 +22,12 @@ import LeftArrow from '../assets/left_icon.png';
 import deleteJSON from '../api/deleteJSON';
 import getJSON from '../api/getJSON';
 
-import { Success, Header } from '../components';
+import { Success, Header, Navbar } from '../components';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    marginBottom: 88
   },
   header: {
     marginTop: 20,
@@ -185,6 +186,9 @@ function DeleteRekeningScreen(props) {
       const result = await deleteJSON(`/bank/account/${selectedRekeningId}`);
       if (result) {
         setSuccess(true);
+        const filtered = rekeningList.filter((data) => data.id !== selectedRekeningId);
+        setRekeningId('');
+        setRekeningList(filtered);
         setTimeout(() => {
           triggerFetch();
           setDeleteModal(false);
@@ -196,8 +200,6 @@ function DeleteRekeningScreen(props) {
       alert(`Failed to activate rekening, ${error.message}`);
     } finally {
       setLoading(false);
-      setRekeningId('');
-      setRekeningList([]);
     }
   };
 
@@ -302,6 +304,7 @@ function DeleteRekeningScreen(props) {
             </View>
           </View>
         </ScrollView>
+        <Navbar />
       </View>
     );
   }

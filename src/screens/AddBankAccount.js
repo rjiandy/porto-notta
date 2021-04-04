@@ -12,10 +12,9 @@ import {
   ActivityIndicator
 } from 'react-native';
 import { connect } from 'react-redux';
-
 import { Actions } from 'react-native-router-flux';
 
-import { Header } from '../components';
+import { Header, Navbar } from '../components';
 
 import colors from '../themes/colors';
 import fonts from '../themes/fonts';
@@ -40,7 +39,8 @@ const deviceWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    marginBottom: 88
   },
   header: {
     marginTop: 20,
@@ -245,6 +245,7 @@ function RegisterBankAccount(props) {
             </View>
           </View>
         </ScrollView>
+        <Navbar />
       </View>
     );
   }

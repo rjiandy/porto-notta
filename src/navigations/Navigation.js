@@ -106,6 +106,11 @@ function NottaNavigation() {
         <Scene key="registerScreen" component={RegisterScreen} title="Register" />
         <Scene key="registerBankScreen" component={RegisterBankAccountScreen} title="Register Bank Account" />
         <Scene key="registerRekening" component={RegisterRekeningScreen} title="Register Rekening" />
+
+        <Scene key="addBankScreen" component={AddBankAccount} title="Add Bank Account" />
+        <Scene key="addRekeningScreen" component={AddRekening} title="Add Rekening" />
+        <Scene key="deleteRekeningScreen" component={DeleteRekeningScreen} title="Delete Rekening" />
+        <Scene key="settingScreen" component={SettingScreen} title="Setting Screen" />
         <Tabs
           key="mainTabs"
           tabBarPosition="bottom"
@@ -141,10 +146,10 @@ function NottaNavigation() {
               <TabIcon name="Akun" tintColor={tintColor} />
             )}
           />
-          <Scene key="addBankScreen" component={AddBankAccount} title="Add Bank Account" />
+          {/* <Scene key="addBankScreen" component={AddBankAccount} title="Add Bank Account" />
           <Scene key="addRekeningScreen" component={AddRekening} title="Add Rekening" />
           <Scene key="deleteRekeningScreen" component={DeleteRekeningScreen} title="Delete Rekening" />
-          <Scene key="settingScreen" component={SettingScreen} title="Setting Screen" />
+          <Scene key="settingScreen" component={SettingScreen} title="Setting Screen" /> */}
         </Tabs>
       </Stack>
     </Router>

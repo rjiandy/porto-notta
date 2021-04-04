@@ -1,6 +1,3 @@
-// activeTintColor={colors.eerieBlack}
-//           inactiveTintColor={colors.grayWeb}
-
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 

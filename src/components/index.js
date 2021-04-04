@@ -4,6 +4,7 @@ import Blank from './Blank';
 import Body from './Body';
 import Header from './Header';
 import Charts from './Chart';
+import Navbar from './Navbar';
 
 export {
   Loading,
@@ -11,5 +12,6 @@ export {
   Blank,
   Body,
   Header,
-  Charts
+  Charts,
+  Navbar
 };

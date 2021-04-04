@@ -19,11 +19,12 @@ import fonts from '../themes/fonts';
 import LeftArrow from '../assets/left_icon.png';
 import patchJSON from '../api/patchJSON';
 
-import { Success, Header } from '../components';
+import { Success, Header, Navbar } from '../components';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    marginBottom: 88
   },
   header: {
     marginTop: 20,
@@ -201,6 +202,7 @@ function SelectRekening(props) {
             </View>
           </View>
         </ScrollView>
+        <Navbar />
       </View>
     );
   }
