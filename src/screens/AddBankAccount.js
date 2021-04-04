@@ -126,18 +126,20 @@ function RegisterBankAccount(props) {
 
   useEffect(() => {
     console.log('inside bank effect');
-    setFetchLoading(true);
-    getBankList()
-      .then((result) => {
+    const fetchBank = async () => {
+      setFetchLoading(true);
+      try {
+        const result = await getBankList();
         if (result && result.data) {
           setBankData(result.data);
         }
         setFetchLoading(false);
-      })
-      .catch((err) => {
+      } catch (err) {
         setFetchLoading(false);
         console.log('Error get Bank List', err);
-      });
+      }
+    };
+    fetchBank();
   }, []);
 
   if (registerBankLoading) {

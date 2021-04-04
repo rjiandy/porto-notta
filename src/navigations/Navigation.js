@@ -70,6 +70,7 @@ function CustomTabBar(props) {
   const { state } = props.navigation;
   const [activeKey, setActiveKey] = useState('homeScreen');
 
+
   const filteredRoutes = state.routes.filter(
     (element) => (element.key === 'homeScreen' || element.key === 'analyticScreen' || element.key === 'profileScreen')
   );
@@ -113,6 +114,7 @@ function NottaNavigation() {
           tabBarStyle={styles.tabBar}
           lazy
           showLabel={false}
+          type="replace"
           tabBarComponent={CustomTabBar}
         >
           <Scene

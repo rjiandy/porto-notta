@@ -3,7 +3,8 @@ import {
   View,
   StyleSheet,
   Text,
-  Dimensions
+  Dimensions,
+  ActivityIndicator
 } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -35,6 +36,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     ...fonts['Default-12'],
     lineHeight: 18
+  },
+  loadContainer: {
+    marginTop: 20
   }
 });
 
@@ -47,6 +51,9 @@ function Loading(props) {
         <Text style={styles.textStyle}>
           {label}
         </Text>
+      </View>
+      <View style={styles.loadContainer}>
+        <ActivityIndicator size="large" color={colors.jet} />
       </View>
     </View>
   );

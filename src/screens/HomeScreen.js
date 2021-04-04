@@ -242,7 +242,7 @@ function HomeScreen(props) {
   const { triggerData } = props;
 
   const [isBlank, setBlank] = useState(false);
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
 
   const [selectedRekening, setSelectedRekening] = useState('Semua');
   const [activeSaldo, setActiveSaldo] = useState('-');
@@ -253,17 +253,12 @@ function HomeScreen(props) {
   const [activeTrxGroup, setActiveTrxGroup] = useState({});
 
   useEffect(() => {
-    setLoading(true);
-
-    AsyncStorage.getItem('@name').then((name) => {
-      setUsername(name.toUpperCase());
-    });
-
-    getHomeData()
-      .then((result) => {
+    const fetchHome = async () => {
+      setLoading(true);
+      try {
+        const result = await getHomeData();
         const { data } = result;
         const { listRekening: listRekeningRes, mutasi_all, saldo } = data;
-
         const groupedRekening = [];
 
         if (listRekeningRes.length <= 0) {
@@ -301,13 +296,18 @@ function HomeScreen(props) {
           setListRekening(groupedRekening);
           setActiveTrxGroup(mutasi_all);
         }
-      })
-      .catch((error) => {
+      } catch (error) {
         alert('Error Getting Home Data', error.message);
-      })
-      .finally(() => {
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    AsyncStorage.getItem('@name').then((name) => {
+      setUsername(name.toUpperCase());
+    });
+
+    fetchHome();
 
   }, [triggerData]);
 

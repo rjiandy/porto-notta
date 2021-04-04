@@ -175,7 +175,6 @@ function ProfileScreen(props) {
   }, [triggerData]);
 
   const onAddPress = () => {
-    Actions.pop();
     Actions.addBankScreen();
   };
 
