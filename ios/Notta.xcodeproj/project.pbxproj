@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* notta_mobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* notta_mobileTests.m */; };
-		1037119EB07ED4DD70B85F75 /* libPods-notta_mobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB8D52D7EFCBD7B7A1DE9A8 /* libPods-notta_mobile.a */; };
+		00E356F31AD99517003FC87E /* NottaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* NottaTests.m */; };
+		1037119EB07ED4DD70B85F75 /* libPods-Notta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB8D52D7EFCBD7B7A1DE9A8 /* libPods-Notta.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2D917E2729B076191049F4E0 /* libPods-notta_mobile-notta_mobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE91A05DE9D34DB35E2D1FE /* libPods-notta_mobile-notta_mobileTests.a */; };
-		2DCD954D1E0B4F2C00145EB5 /* notta_mobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* notta_mobileTests.m */; };
-		3EE67801FDE5C6CD9215320F /* libPods-notta_mobile-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F80C54420C294171BDF88EBE /* libPods-notta_mobile-tvOSTests.a */; };
+		2D917E2729B076191049F4E0 /* libPods-Notta-NottaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE91A05DE9D34DB35E2D1FE /* libPods-Notta-NottaTests.a */; };
+		2DCD954D1E0B4F2C00145EB5 /* NottaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* NottaTests.m */; };
+		3EE67801FDE5C6CD9215320F /* libPods-Notta-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F80C54420C294171BDF88EBE /* libPods-Notta-tvOSTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		A0D32E5410AFFE417711C55C /* libPods-notta_mobile-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C62A53EB651E4A2CE573656 /* libPods-notta_mobile-tvOS.a */; };
+		A0D32E5410AFFE417711C55C /* libPods-Notta-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C62A53EB651E4A2CE573656 /* libPods-Notta-tvOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,39 +28,39 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = notta_mobile;
+			remoteInfo = Notta;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "notta_mobile-tvOS";
+			remoteInfo = "Notta-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* notta_mobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = notta_mobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* NottaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NottaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* notta_mobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = notta_mobileTests.m; sourceTree = "<group>"; };
-		0BE91A05DE9D34DB35E2D1FE /* libPods-notta_mobile-notta_mobileTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-notta_mobile-notta_mobileTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07F961A680F5B00A75B9A /* notta_mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = notta_mobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = notta_mobile/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = notta_mobile/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = notta_mobile/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = notta_mobile/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = notta_mobile/main.m; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* notta_mobile-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "notta_mobile-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* notta_mobile-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "notta_mobile-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		41A9FAC647ACF1B8F720A10B /* Pods-notta_mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-notta_mobile.release.xcconfig"; path = "Target Support Files/Pods-notta_mobile/Pods-notta_mobile.release.xcconfig"; sourceTree = "<group>"; };
-		52E82581EAEFD3FDCCB165EC /* Pods-notta_mobile-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-notta_mobile-tvOS.release.xcconfig"; path = "Target Support Files/Pods-notta_mobile-tvOS/Pods-notta_mobile-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		5BB8D52D7EFCBD7B7A1DE9A8 /* libPods-notta_mobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-notta_mobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		74AFEFF3C9B53117067362EF /* Pods-notta_mobile-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-notta_mobile-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-notta_mobile-tvOSTests/Pods-notta_mobile-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		7A224A9A9D284505CFED5922 /* Pods-notta_mobile-notta_mobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-notta_mobile-notta_mobileTests.debug.xcconfig"; path = "Target Support Files/Pods-notta_mobile-notta_mobileTests/Pods-notta_mobile-notta_mobileTests.debug.xcconfig"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = notta_mobile/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8B396B794F714B0A8E243E48 /* Pods-notta_mobile-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-notta_mobile-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-notta_mobile-tvOS/Pods-notta_mobile-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		9C62A53EB651E4A2CE573656 /* libPods-notta_mobile-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-notta_mobile-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F21AD99517003FC87E /* NottaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NottaTests.m; sourceTree = "<group>"; };
+		0BE91A05DE9D34DB35E2D1FE /* libPods-Notta-NottaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Notta-NottaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* Notta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Notta/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Notta/AppDelegate.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Notta/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Notta/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Notta/main.m; sourceTree = "<group>"; };
+		2D02E47B1E0B4A5D006451C7 /* Notta-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notta-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* Notta-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Notta-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		41A9FAC647ACF1B8F720A10B /* Pods-Notta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notta.release.xcconfig"; path = "Target Support Files/Pods-Notta/Pods-Notta.release.xcconfig"; sourceTree = "<group>"; };
+		52E82581EAEFD3FDCCB165EC /* Pods-Notta-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notta-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Notta-tvOS/Pods-Notta-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		5BB8D52D7EFCBD7B7A1DE9A8 /* libPods-Notta.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Notta.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		74AFEFF3C9B53117067362EF /* Pods-Notta-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notta-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Notta-tvOSTests/Pods-Notta-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		7A224A9A9D284505CFED5922 /* Pods-Notta-NottaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notta-NottaTests.debug.xcconfig"; path = "Target Support Files/Pods-Notta-NottaTests/Pods-Notta-NottaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Notta/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8B396B794F714B0A8E243E48 /* Pods-Notta-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notta-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Notta-tvOS/Pods-Notta-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		9C62A53EB651E4A2CE573656 /* libPods-Notta-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Notta-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C03EAF0926035B9500EAA496 /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Foundation.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		C03EAF0A26035B9500EAA496 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		C03EAF0B26035B9500EAA496 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SimpleLineIcons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
@@ -77,12 +77,12 @@
 		C03EAF1626035B9500EAA496 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Solid.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		C03EAF1726035B9500EAA496 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Brands.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		C03EAF1826035B9500EAA496 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Feather.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
-		D94152FBC8469F0AD000C9E9 /* Pods-notta_mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-notta_mobile.debug.xcconfig"; path = "Target Support Files/Pods-notta_mobile/Pods-notta_mobile.debug.xcconfig"; sourceTree = "<group>"; };
-		DBFBA9413F75FE94D772D467 /* Pods-notta_mobile-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-notta_mobile-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-notta_mobile-tvOSTests/Pods-notta_mobile-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D94152FBC8469F0AD000C9E9 /* Pods-Notta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notta.debug.xcconfig"; path = "Target Support Files/Pods-Notta/Pods-Notta.debug.xcconfig"; sourceTree = "<group>"; };
+		DBFBA9413F75FE94D772D467 /* Pods-Notta-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notta-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Notta-tvOSTests/Pods-Notta-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F80C54420C294171BDF88EBE /* libPods-notta_mobile-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-notta_mobile-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FBEAC300D7A457A47D5C89AB /* Pods-notta_mobile-notta_mobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-notta_mobile-notta_mobileTests.release.xcconfig"; path = "Target Support Files/Pods-notta_mobile-notta_mobileTests/Pods-notta_mobile-notta_mobileTests.release.xcconfig"; sourceTree = "<group>"; };
+		F80C54420C294171BDF88EBE /* libPods-Notta-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Notta-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBEAC300D7A457A47D5C89AB /* Pods-Notta-NottaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notta-NottaTests.release.xcconfig"; path = "Target Support Files/Pods-Notta-NottaTests/Pods-Notta-NottaTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D917E2729B076191049F4E0 /* libPods-notta_mobile-notta_mobileTests.a in Frameworks */,
+				2D917E2729B076191049F4E0 /* libPods-Notta-NottaTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1037119EB07ED4DD70B85F75 /* libPods-notta_mobile.a in Frameworks */,
+				1037119EB07ED4DD70B85F75 /* libPods-Notta.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,7 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0D32E5410AFFE417711C55C /* libPods-notta_mobile-tvOS.a in Frameworks */,
+				A0D32E5410AFFE417711C55C /* libPods-Notta-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,20 +114,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EE67801FDE5C6CD9215320F /* libPods-notta_mobile-tvOSTests.a in Frameworks */,
+				3EE67801FDE5C6CD9215320F /* libPods-Notta-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* notta_mobileTests */ = {
+		00E356EF1AD99517003FC87E /* NottaTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* notta_mobileTests.m */,
+				00E356F21AD99517003FC87E /* NottaTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = notta_mobileTests;
+			path = NottaTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -138,7 +138,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* notta_mobile */ = {
+		13B07FAE1A68108700A75B9A /* Notta */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -149,7 +149,7 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = notta_mobile;
+			name = Notta;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -157,10 +157,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				5BB8D52D7EFCBD7B7A1DE9A8 /* libPods-notta_mobile.a */,
-				0BE91A05DE9D34DB35E2D1FE /* libPods-notta_mobile-notta_mobileTests.a */,
-				9C62A53EB651E4A2CE573656 /* libPods-notta_mobile-tvOS.a */,
-				F80C54420C294171BDF88EBE /* libPods-notta_mobile-tvOSTests.a */,
+				5BB8D52D7EFCBD7B7A1DE9A8 /* libPods-Notta.a */,
+				0BE91A05DE9D34DB35E2D1FE /* libPods-Notta-NottaTests.a */,
+				9C62A53EB651E4A2CE573656 /* libPods-Notta-tvOS.a */,
+				F80C54420C294171BDF88EBE /* libPods-Notta-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -183,9 +183,9 @@
 			isa = PBXGroup;
 			children = (
 				C03EAF0426035AD700EAA496 /* Fonts */,
-				13B07FAE1A68108700A75B9A /* notta_mobile */,
+				13B07FAE1A68108700A75B9A /* Notta */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* notta_mobileTests */,
+				00E356EF1AD99517003FC87E /* NottaTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				9A76A62469A3556DE59A1D5C /* Pods */,
@@ -199,10 +199,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* notta_mobile.app */,
-				00E356EE1AD99517003FC87E /* notta_mobileTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* notta_mobile-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* notta_mobile-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* Notta.app */,
+				00E356EE1AD99517003FC87E /* NottaTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* Notta-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* Notta-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -210,14 +210,14 @@
 		9A76A62469A3556DE59A1D5C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D94152FBC8469F0AD000C9E9 /* Pods-notta_mobile.debug.xcconfig */,
-				41A9FAC647ACF1B8F720A10B /* Pods-notta_mobile.release.xcconfig */,
-				7A224A9A9D284505CFED5922 /* Pods-notta_mobile-notta_mobileTests.debug.xcconfig */,
-				FBEAC300D7A457A47D5C89AB /* Pods-notta_mobile-notta_mobileTests.release.xcconfig */,
-				8B396B794F714B0A8E243E48 /* Pods-notta_mobile-tvOS.debug.xcconfig */,
-				52E82581EAEFD3FDCCB165EC /* Pods-notta_mobile-tvOS.release.xcconfig */,
-				DBFBA9413F75FE94D772D467 /* Pods-notta_mobile-tvOSTests.debug.xcconfig */,
-				74AFEFF3C9B53117067362EF /* Pods-notta_mobile-tvOSTests.release.xcconfig */,
+				D94152FBC8469F0AD000C9E9 /* Pods-Notta.debug.xcconfig */,
+				41A9FAC647ACF1B8F720A10B /* Pods-Notta.release.xcconfig */,
+				7A224A9A9D284505CFED5922 /* Pods-Notta-NottaTests.debug.xcconfig */,
+				FBEAC300D7A457A47D5C89AB /* Pods-Notta-NottaTests.release.xcconfig */,
+				8B396B794F714B0A8E243E48 /* Pods-Notta-tvOS.debug.xcconfig */,
+				52E82581EAEFD3FDCCB165EC /* Pods-Notta-tvOS.release.xcconfig */,
+				DBFBA9413F75FE94D772D467 /* Pods-Notta-tvOSTests.debug.xcconfig */,
+				74AFEFF3C9B53117067362EF /* Pods-Notta-tvOSTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -248,9 +248,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* notta_mobileTests */ = {
+		00E356ED1AD99517003FC87E /* NottaTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "notta_mobileTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "NottaTests" */;
 			buildPhases = (
 				27DA667B36CD9B9E38D3A9B3 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -263,14 +263,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = notta_mobileTests;
-			productName = notta_mobileTests;
-			productReference = 00E356EE1AD99517003FC87E /* notta_mobileTests.xctest */;
+			name = NottaTests;
+			productName = NottaTests;
+			productReference = 00E356EE1AD99517003FC87E /* NottaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* notta_mobile */ = {
+		13B07F861A680F5B00A75B9A /* Notta */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "notta_mobile" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Notta" */;
 			buildPhases = (
 				07EF9EF6F8565F09636DA68E /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -284,14 +284,14 @@
 			);
 			dependencies = (
 			);
-			name = notta_mobile;
-			productName = notta_mobile;
-			productReference = 13B07F961A680F5B00A75B9A /* notta_mobile.app */;
+			name = Notta;
+			productName = Notta;
+			productReference = 13B07F961A680F5B00A75B9A /* Notta.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* notta_mobile-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* Notta-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "notta_mobile-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Notta-tvOS" */;
 			buildPhases = (
 				6BD2F2EA5DE0D3B58A129210 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
@@ -304,14 +304,14 @@
 			);
 			dependencies = (
 			);
-			name = "notta_mobile-tvOS";
-			productName = "notta_mobile-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* notta_mobile-tvOS.app */;
+			name = "Notta-tvOS";
+			productName = "Notta-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* Notta-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* notta_mobile-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* Notta-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "notta_mobile-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Notta-tvOSTests" */;
 			buildPhases = (
 				B69D646F6CA27C1DB4B413E4 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
@@ -323,9 +323,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "notta_mobile-tvOSTests";
-			productName = "notta_mobile-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* notta_mobile-tvOSTests.xctest */;
+			name = "Notta-tvOSTests";
+			productName = "Notta-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* Notta-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -341,6 +341,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 6U94T34A9T;
 						LastSwiftMigration = 1120;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -354,7 +355,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "notta_mobile" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Notta" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -367,10 +368,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* notta_mobile */,
-				00E356ED1AD99517003FC87E /* notta_mobileTests */,
-				2D02E47A1E0B4A5D006451C7 /* notta_mobile-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* notta_mobile-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* Notta */,
+				00E356ED1AD99517003FC87E /* NottaTests */,
+				2D02E47A1E0B4A5D006451C7 /* Notta-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* Notta-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -439,7 +440,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-notta_mobile-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Notta-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -461,7 +462,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-notta_mobile-notta_mobileTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Notta-NottaTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -488,7 +489,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-notta_mobile-notta_mobileTests/Pods-notta_mobile-notta_mobileTests-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Notta-NottaTests/Pods-Notta-NottaTests-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -529,7 +530,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-notta_mobile-notta_mobileTests/Pods-notta_mobile-notta_mobileTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Notta-NottaTests/Pods-Notta-NottaTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6BD2F2EA5DE0D3B58A129210 /* [CP] Check Pods Manifest.lock */ = {
@@ -547,7 +548,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-notta_mobile-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Notta-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -569,7 +570,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-notta_mobile-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Notta-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -582,7 +583,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-notta_mobile/Pods-notta_mobile-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Notta/Pods-Notta-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -623,7 +624,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-notta_mobile/Pods-notta_mobile-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Notta/Pods-Notta-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -671,7 +672,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* notta_mobileTests.m in Sources */,
+				00E356F31AD99517003FC87E /* NottaTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -697,7 +698,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* notta_mobileTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* NottaTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,12 +707,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* notta_mobile */;
+			target = 13B07F861A680F5B00A75B9A /* Notta */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* notta_mobile-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* Notta-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -719,14 +720,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7A224A9A9D284505CFED5922 /* Pods-notta_mobile-notta_mobileTests.debug.xcconfig */;
+			baseConfigurationReference = 7A224A9A9D284505CFED5922 /* Pods-Notta-NottaTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = notta_mobileTests/Info.plist;
+				INFOPLIST_FILE = NottaTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -736,17 +737,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/notta_mobile.app/notta_mobile";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Notta.app/Notta";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FBEAC300D7A457A47D5C89AB /* Pods-notta_mobile-notta_mobileTests.release.xcconfig */;
+			baseConfigurationReference = FBEAC300D7A457A47D5C89AB /* Pods-Notta-NottaTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = notta_mobileTests/Info.plist;
+				INFOPLIST_FILE = NottaTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -756,27 +757,28 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/notta_mobile.app/notta_mobile";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Notta.app/Notta";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D94152FBC8469F0AD000C9E9 /* Pods-notta_mobile.debug.xcconfig */;
+			baseConfigurationReference = D94152FBC8469F0AD000C9E9 /* Pods-Notta.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6U94T34A9T;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = notta_mobile/Info.plist;
+				INFOPLIST_FILE = Notta/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = notta_mobile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.notta.mobile.userapp;
+				PRODUCT_NAME = Notta;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -785,20 +787,21 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41A9FAC647ACF1B8F720A10B /* Pods-notta_mobile.release.xcconfig */;
+			baseConfigurationReference = 41A9FAC647ACF1B8F720A10B /* Pods-Notta.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = notta_mobile/Info.plist;
+				DEVELOPMENT_TEAM = 6U94T34A9T;
+				INFOPLIST_FILE = Notta/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = notta_mobile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.notta.mobile.userapp;
+				PRODUCT_NAME = Notta;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -806,7 +809,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B396B794F714B0A8E243E48 /* Pods-notta_mobile-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 8B396B794F714B0A8E243E48 /* Pods-Notta-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -817,14 +820,14 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "notta_mobile-tvOS/Info.plist";
+				INFOPLIST_FILE = "Notta-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.notta_mobile-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Notta-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -834,7 +837,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52E82581EAEFD3FDCCB165EC /* Pods-notta_mobile-tvOS.release.xcconfig */;
+			baseConfigurationReference = 52E82581EAEFD3FDCCB165EC /* Pods-Notta-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -845,14 +848,14 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "notta_mobile-tvOS/Info.plist";
+				INFOPLIST_FILE = "Notta-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.notta_mobile-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Notta-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -862,7 +865,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DBFBA9413F75FE94D772D467 /* Pods-notta_mobile-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = DBFBA9413F75FE94D772D467 /* Pods-Notta-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -872,24 +875,24 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "notta_mobile-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "Notta-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.notta_mobile-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Notta-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/notta_mobile-tvOS.app/notta_mobile-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Notta-tvOS.app/Notta-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 74AFEFF3C9B53117067362EF /* Pods-notta_mobile-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 74AFEFF3C9B53117067362EF /* Pods-Notta-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -899,17 +902,17 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "notta_mobile-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "Notta-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.notta_mobile-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Notta-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/notta_mobile-tvOS.app/notta_mobile-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Notta-tvOS.app/Notta-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -1030,7 +1033,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "notta_mobileTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "NottaTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -1039,7 +1042,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "notta_mobile" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Notta" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -1048,7 +1051,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "notta_mobile-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Notta-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -1057,7 +1060,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "notta_mobile-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Notta-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -1066,7 +1069,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "notta_mobile" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Notta" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

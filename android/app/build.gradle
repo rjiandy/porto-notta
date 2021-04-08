@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.notta_mobile"
+        applicationId "com.notta.mobile.userapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

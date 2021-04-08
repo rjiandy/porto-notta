@@ -3,12 +3,12 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'notta_mobile' do
+target 'Notta' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
 
-  target 'notta_mobileTests' do
+  target 'NottaTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -23,10 +23,10 @@ target 'notta_mobile' do
   end
 end
 
-target 'notta_mobile-tvOS' do
-  # Pods for notta_mobile-tvOS
+target 'Notta-tvOS' do
+  # Pods for Notta-tvOS
 
-  target 'notta_mobile-tvOSTests' do
+  target 'Notta-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
