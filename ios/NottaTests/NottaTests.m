@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface notta_mobileTests : XCTestCase
+@interface NottaTests : XCTestCase
 
 @end
 
-@implementation notta_mobileTests
+@implementation NottaTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {
