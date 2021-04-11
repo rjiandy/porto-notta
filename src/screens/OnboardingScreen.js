@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 80,
     borderRadius: 18,
-    marginBottom: 20
+    marginBottom: 20,
+    width: '85%'
   },
   image: {
     height: windowHeight * 0.75,
@@ -71,7 +72,7 @@ function OnboardingScreen() {
             />
             <View style={{ marginHorizontal: 60 }} >
               <Text style={{ textAlign: 'center', lineHeight: 24 }}>
-              Analisa Pengeluaran Dan Pendapatanmu Dari Semua Rekening Yang Kamu Miliki
+                Analisa Pengeluaran Dan Pendapatanmu Dari Semua Rekening Yang Kamu Miliki
               </Text>
             </View>
           </View>

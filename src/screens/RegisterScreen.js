@@ -126,7 +126,7 @@ function RegisterScreen() {
         <View style={styles.header}>
           <View style={{ flex: 1, flexDirection: 'row', paddingLeft: 20 }}>
             <TouchableOpacity onPress={() => Actions.pop()}>
-              <Image width="30" height="22" source={LeftArrow} />
+              <Image style={{ width: 30, height: 22 }} source={LeftArrow} />
             </TouchableOpacity>
             <View style={{ flex: 1, alignItems: 'center' }}>
               <Text style={[fonts['Default-14-black']], { marginLeft: -30 }}>

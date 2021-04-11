@@ -158,7 +158,7 @@ function SelectRekening(props) {
             <View style={styles.header}>
               <View style={{ flex: 1, flexDirection: 'row', paddingLeft: 20 }}>
                 <TouchableOpacity onPress={() => Actions.pop()}>
-                  <Image width="30" height="22" source={LeftArrow} />
+                  <Image style={{ width: 30, height: 22 }} source={LeftArrow} />
                 </TouchableOpacity>
                 <Text style={[fonts['Default-14-black'], { textAlign: 'center', flex: 1 }]}>
                   Pilih rekening yang ingin ditambahkan. Anda bisa memilih lebih dari satu rekening

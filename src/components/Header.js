@@ -13,8 +13,7 @@ const styles = StyleSheet.create({
   header: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 40,
-    height: 42,
+    paddingTop: 40,
     backgroundColor: colors.white,
     borderBottomWidth: 1,
     borderColor: colors.cultured
@@ -24,7 +23,7 @@ const styles = StyleSheet.create({
 export default function Header(props) {
   return (
     <View style={styles.header}>
-      <Image source={NottaLogo} />
+      <Image source={NottaLogo} style={{ height: 42, width: 80 }} />
     </View>
   );
 }

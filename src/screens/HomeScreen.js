@@ -34,7 +34,8 @@ const deviceWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   mainCard: {
-    flex: 1,
+    width: deviceWidth,
+    height: 250,
     alignSelf: 'center'
   },
   container: {

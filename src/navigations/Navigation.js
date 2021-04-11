@@ -146,10 +146,6 @@ function NottaNavigation() {
               <TabIcon name="Akun" tintColor={tintColor} />
             )}
           />
-          {/* <Scene key="addBankScreen" component={AddBankAccount} title="Add Bank Account" />
-          <Scene key="addRekeningScreen" component={AddRekening} title="Add Rekening" />
-          <Scene key="deleteRekeningScreen" component={DeleteRekeningScreen} title="Delete Rekening" />
-          <Scene key="settingScreen" component={SettingScreen} title="Setting Screen" /> */}
         </Tabs>
       </Stack>
     </Router>

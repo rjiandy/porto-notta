@@ -49,7 +49,8 @@ const styles = StyleSheet.create({
   },
   cardImage: {
     alignSelf: 'center',
-    width: deviceWidth * 0.8
+    width: deviceWidth * 0.8,
+    height: 250
   },
   imageContainer: {
     marginTop: Platform.OS === 'ios' ? 30 : 0
@@ -171,7 +172,7 @@ function RegisterBankAccount(props) {
                     Actions.profileScreen();
                   }}
                 >
-                  <Image width="30" height="22" source={LeftArrow} />
+                  <Image style={{ width: 30, height: 22 }} source={LeftArrow} />
                 </TouchableOpacity>
                 <View style={{ flex: 1, alignItems: 'center' }}>
                   <Text style={[fonts['Default-14-black'], { marginLeft: -50 }]}>
