@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Actions } from 'react-native-router-flux';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import {
   Header,
@@ -41,7 +42,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     borderTopWidth: 1,
     borderBottomWidth: 1,
-    borderColor: colors.cultured
+    borderColor: colors.cultured,
+    flexDirection: 'row',
+    paddingRight: 20
   },
   overlay: {
     position: 'absolute',
@@ -94,6 +97,10 @@ function SettingScreen() {
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [newConfirmationPassword, setConfirmationPassword] = useState('');
+
+  const [hideOldPassword, setShowOldPassword] = useState(true);
+  const [hidePassword, setShowPassword] = useState(true);
+  const [hideConfirmPassword, setShowConfirmPassword] = useState(true);
 
   const onLogout = async () => {
     await AsyncStorage.clear();
@@ -212,8 +219,12 @@ function SettingScreen() {
                     autoCapitalize="none"
                     value={oldPassword}
                     onChangeText={(text) => setOldPassword(text)}
-                    secureTextEntry
+                    secureTextEntry={hideOldPassword}
+                    style={{ flex: 1 }}
                   />
+                  <TouchableOpacity onPress={() => setShowOldPassword(!hideOldPassword)}>
+                    <Icon name={hideOldPassword ? 'eye-outline' : 'eye-off-outline'} size={24} color={colors.lightGray} />
+                  </TouchableOpacity>
                 </View>
                 <View style={styles.whiteRow}>
                   <TextInput
@@ -221,8 +232,12 @@ function SettingScreen() {
                     autoCapitalize="none"
                     value={newPassword}
                     onChangeText={(text) => setNewPassword(text)}
-                    secureTextEntry
+                    secureTextEntry={hidePassword}
+                    style={{ flex: 1 }}
                   />
+                  <TouchableOpacity onPress={() => setShowPassword(!hidePassword)}>
+                    <Icon name={hidePassword ? 'eye-outline' : 'eye-off-outline'} size={24} color={colors.lightGray} />
+                  </TouchableOpacity>
                 </View>
                 <View style={styles.whiteRow}>
                   <TextInput
@@ -230,8 +245,12 @@ function SettingScreen() {
                     autoCapitalize="none"
                     value={newConfirmationPassword}
                     onChangeText={(text) => setConfirmationPassword(text)}
-                    secureTextEntry
+                    secureTextEntry={hideConfirmPassword}
+                    style={{ flex: 1 }}
                   />
+                  <TouchableOpacity onPress={() => setShowConfirmPassword(!hideConfirmPassword)}>
+                    <Icon name={hideConfirmPassword ? 'eye-outline' : 'eye-off-outline'} size={24} color={colors.lightGray} />
+                  </TouchableOpacity>
                 </View>
                 <View style={{ flex: 1, justifyContent: 'flex-end' }}>
                   <TouchableOpacity

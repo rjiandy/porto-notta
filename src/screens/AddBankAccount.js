@@ -13,6 +13,7 @@ import {
   KeyboardAvoidingView
 } from 'react-native';
 import { connect } from 'react-redux';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { Actions } from 'react-native-router-flux';
 
 import { Header, Navbar } from '../components';
@@ -96,12 +97,13 @@ const styles = StyleSheet.create({
   }
 });
 
-function RegisterBankAccount(props) {
+function AddBankAccount(props) {
   const { addRekeningList } = props;
   const [showBankModal, setBankModal] = useState(false);
   const [selectedBank, setSelectedBank] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [hidePassword, setShowPassword] = useState(true);
 
   const [bankData, setBankData] = useState();
   const [fetchLoading, setFetchLoading] = useState(false);
@@ -229,11 +231,14 @@ function RegisterBankAccount(props) {
                   placeholder="Password"
                   placeholderTextColor={colors.black}
                   style={[fonts['Default-14-black'], { marginLeft: 10, flex: 1 }]}
-                  secureTextEntry
+                  secureTextEntry={hidePassword}
                   value={password}
                   onChangeText={(text) => setPassword(text)}
                   autoCapitalize="none"
                 />
+                <TouchableOpacity onPress={() => setShowPassword(!hidePassword)}>
+                  <Icon name={hidePassword ? 'eye-outline' : 'eye-off-outline'} size={24} color={colors.black} />
+                </TouchableOpacity>
               </View>
               <View style={styles.buttonContainer}>
                 <TouchableOpacity
@@ -263,4 +268,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(RegisterBankAccount);
+export default connect(null, mapDispatchToProps)(AddBankAccount);

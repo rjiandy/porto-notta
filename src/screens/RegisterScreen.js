@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Actions } from 'react-native-router-flux';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import registerUser from '../api/registerUser';
 
@@ -78,6 +79,8 @@ function RegisterScreen() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isLoading, setLoading] = useState(false);
+  const [hidePassword, setShowPassword] = useState(true);
+  const [hideConfirmPassword, setShowConfirmPassword] = useState(true);
 
   const checkValidation = () => {
     return (
@@ -177,23 +180,29 @@ function RegisterScreen() {
             <PasswordIcon width={23} height={23} />
             <TextInput
               placeholder="Password"
-              secureTextEntry
+              secureTextEntry={hidePassword}
               value={password}
               onChangeText={(input) => setPassword(input)}
               style={[fonts['Default-14-black'], { marginLeft: 10, flex: 1 }]}
               autoCapitalize="none"
             />
+            <TouchableOpacity onPress={() => setShowPassword(!hidePassword)}>
+              <Icon name={hidePassword ? 'eye-outline' : 'eye-off-outline'} size={24} color={colors.lightGray} />
+            </TouchableOpacity>
           </View>
           <View style={styles.inputContainer}>
             <PasswordIcon width={23} height={23} />
             <TextInput
               placeholder="Konfirmasi Password"
-              secureTextEntry
+              secureTextEntry={hideConfirmPassword}
               value={confirmPassword}
               onChangeText={(input) => setConfirmPassword(input)}
               style={[fonts['Default-14-black'], { marginLeft: 10, flex: 1 }]}
               autoCapitalize="none"
             />
+            <TouchableOpacity onPress={() => setShowConfirmPassword(!hideConfirmPassword)}>
+              <Icon name={hideConfirmPassword ? 'eye-outline' : 'eye-off-outline'} size={24} color={colors.lightGray} />
+            </TouchableOpacity>
           </View>
           <View style={styles.buttonContainer}>
             <TouchableOpacity

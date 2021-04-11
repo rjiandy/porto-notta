@@ -13,7 +13,7 @@ import {
   KeyboardAvoidingView
 } from 'react-native';
 import { connect } from 'react-redux';
-
+import Icon from 'react-native-vector-icons/Ionicons';
 import { Actions } from 'react-native-router-flux';
 
 import colors from '../themes/colors';
@@ -104,6 +104,7 @@ function RegisterBankAccount(props) {
 
   const [bankData, setBankData] = useState();
   const [fetchLoading, setFetchLoading] = useState(false);
+  const [hidePassword, setShowPassword] = useState(true);
   const [registerBankLoading, setRegisterBankLoading] = useState(false);
 
   const onRegisterBank = async () => {
@@ -220,11 +221,14 @@ function RegisterBankAccount(props) {
                   placeholder="Password"
                   placeholderTextColor={colors.black}
                   style={[fonts['Default-14-black'], { marginLeft: 10, flex: 1 }]}
-                  secureTextEntry
+                  secureTextEntry={hidePassword}
                   value={password}
                   onChangeText={(text) => setPassword(text)}
                   autoCapitalize="none"
                 />
+                <TouchableOpacity onPress={() => setShowPassword(!hidePassword)}>
+                  <Icon name={hidePassword ? 'eye-outline' : 'eye-off-outline'} size={24} color={colors.black} />
+                </TouchableOpacity>
               </View>
               <View style={styles.buttonContainer}>
                 <TouchableOpacity

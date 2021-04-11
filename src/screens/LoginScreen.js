@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import BASE_URL from '../api/BASE_URL';
 
@@ -68,6 +69,7 @@ const styles = StyleSheet.create({
 function LoginScreen() {
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const [hidePassword, setShowPassword] = useState(true);
 
   const [isLoading, setLoading] = useState(false);
 
@@ -139,12 +141,16 @@ function LoginScreen() {
             <PasswordIcon width={23} height={23} />
             <TextInput
               placeholder="Password"
-              secureTextEntry
+              secureTextEntry={hidePassword}
               value={password}
               onChangeText={(input) => setPassword(input)}
               style={[fonts['Default-14-black'], { marginLeft: 10, flex: 1 }]}
               autoCapitalize="none"
             />
+            <TouchableOpacity onPress={() => setShowPassword(!hidePassword)}>
+              <Icon name={hidePassword ? 'eye-outline' : 'eye-off-outline'} size={24} color={colors.lightGray} />
+            </TouchableOpacity>
+
           </View>
           <View style={styles.buttonContainer}>
             <TouchableOpacity
