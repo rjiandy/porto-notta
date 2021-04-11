@@ -6,7 +6,10 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
-  ActivityIndicator
+  ActivityIndicator,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Actions } from 'react-native-router-flux';
@@ -121,8 +124,8 @@ function RegisterScreen() {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.bodyWhite }}>
-      <View style={styles.container}>
+    <KeyboardAvoidingView style={{ flex: 1, backgroundColor: colors.bodyWhite }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <ScrollView style={styles.container}>
         <View style={styles.header}>
           <View style={{ flex: 1, flexDirection: 'row', paddingLeft: 20 }}>
             <TouchableOpacity onPress={() => Actions.pop()}>
@@ -208,8 +211,8 @@ function RegisterScreen() {
             </TouchableOpacity>
           </View>
         </View>
-      </View>
-    </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 

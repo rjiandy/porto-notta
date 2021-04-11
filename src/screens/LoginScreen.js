@@ -6,7 +6,10 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
-  ActivityIndicator
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -107,8 +110,11 @@ function LoginScreen() {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.bodyWhite }}>
-      <View style={styles.container}>
+    <KeyboardAvoidingView
+      style={{ flex: 1, backgroundColor: colors.bodyWhite }}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    >
+      <ScrollView style={styles.container}>
         <View style={styles.header}>
           <Text style={[fonts['Default-14-black'], { alignSelf: 'center' }]}>
             Masuk/Daftar
@@ -164,8 +170,8 @@ function LoginScreen() {
           </View>
 
         </View>
-      </View>
-    </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 

@@ -9,7 +9,8 @@ import {
   Dimensions,
   Platform,
   ScrollView,
-  ActivityIndicator
+  ActivityIndicator,
+  KeyboardAvoidingView
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
@@ -150,7 +151,7 @@ function RegisterBankAccount(props) {
     );
   } else {
     return (
-      <View style={{ flex: 1 }}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         {
           showBankModal && (
             <BankOptions
@@ -246,7 +247,7 @@ function RegisterBankAccount(props) {
           </View>
         </ScrollView>
         <Navbar />
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
