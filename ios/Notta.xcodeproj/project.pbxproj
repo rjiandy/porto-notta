@@ -18,8 +18,11 @@
 		2D917E2729B076191049F4E0 /* libPods-Notta-NottaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE91A05DE9D34DB35E2D1FE /* libPods-Notta-NottaTests.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* NottaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* NottaTests.m */; };
 		3EE67801FDE5C6CD9215320F /* libPods-Notta-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F80C54420C294171BDF88EBE /* libPods-Notta-tvOSTests.a */; };
+		4AA7DD208F0E75E51E33FB62 /* libPods-OneSignalNotificationServiceExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51B534939779CF7C2412D194 /* libPods-OneSignalNotificationServiceExtension.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		A0D32E5410AFFE417711C55C /* libPods-Notta-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C62A53EB651E4A2CE573656 /* libPods-Notta-tvOS.a */; };
+		C0877F49262CCD9F00964C21 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0877F48262CCD9F00964C21 /* NotificationService.swift */; };
+		C0877F4D262CCD9F00964C21 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C0877F46262CCD9F00964C21 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +40,28 @@
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
 			remoteInfo = "Notta-tvOS";
 		};
+		C0877F4B262CCD9F00964C21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C0877F45262CCD9F00964C21;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C0877F51262CCD9F00964C21 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C0877F4D262CCD9F00964C21 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
@@ -54,6 +78,8 @@
 		2D02E47B1E0B4A5D006451C7 /* Notta-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notta-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* Notta-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Notta-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A9FAC647ACF1B8F720A10B /* Pods-Notta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notta.release.xcconfig"; path = "Target Support Files/Pods-Notta/Pods-Notta.release.xcconfig"; sourceTree = "<group>"; };
+		44F4B1F1436A32607BAF300F /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		51B534939779CF7C2412D194 /* libPods-OneSignalNotificationServiceExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneSignalNotificationServiceExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52E82581EAEFD3FDCCB165EC /* Pods-Notta-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notta-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Notta-tvOS/Pods-Notta-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		5BB8D52D7EFCBD7B7A1DE9A8 /* libPods-Notta.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Notta.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		74AFEFF3C9B53117067362EF /* Pods-Notta-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notta-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Notta-tvOSTests/Pods-Notta-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -77,8 +103,14 @@
 		C03EAF1626035B9500EAA496 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Solid.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		C03EAF1726035B9500EAA496 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Brands.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		C03EAF1826035B9500EAA496 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Feather.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		C0877F41262CCD5600964C21 /* Notta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Notta.entitlements; path = Notta/Notta.entitlements; sourceTree = "<group>"; };
+		C0877F46262CCD9F00964C21 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0877F48262CCD9F00964C21 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		C0877F4A262CCD9F00964C21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0877F92262D15FF00964C21 /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		D94152FBC8469F0AD000C9E9 /* Pods-Notta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notta.debug.xcconfig"; path = "Target Support Files/Pods-Notta/Pods-Notta.debug.xcconfig"; sourceTree = "<group>"; };
 		DBFBA9413F75FE94D772D467 /* Pods-Notta-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notta-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Notta-tvOSTests/Pods-Notta-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EB8A1DB9F5C189C0EFB150DC /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F80C54420C294171BDF88EBE /* libPods-Notta-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Notta-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +150,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C0877F43262CCD9F00964C21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AA7DD208F0E75E51E33FB62 /* libPods-OneSignalNotificationServiceExtension.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -141,6 +181,7 @@
 		13B07FAE1A68108700A75B9A /* Notta */ = {
 			isa = PBXGroup;
 			children = (
+				C0877F41262CCD5600964C21 /* Notta.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -161,6 +202,7 @@
 				0BE91A05DE9D34DB35E2D1FE /* libPods-Notta-NottaTests.a */,
 				9C62A53EB651E4A2CE573656 /* libPods-Notta-tvOS.a */,
 				F80C54420C294171BDF88EBE /* libPods-Notta-tvOSTests.a */,
+				51B534939779CF7C2412D194 /* libPods-OneSignalNotificationServiceExtension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -186,6 +228,7 @@
 				13B07FAE1A68108700A75B9A /* Notta */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* NottaTests */,
+				C0877F47262CCD9F00964C21 /* OneSignalNotificationServiceExtension */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				9A76A62469A3556DE59A1D5C /* Pods */,
@@ -203,6 +246,7 @@
 				00E356EE1AD99517003FC87E /* NottaTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* Notta-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* Notta-tvOSTests.xctest */,
+				C0877F46262CCD9F00964C21 /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -218,6 +262,8 @@
 				52E82581EAEFD3FDCCB165EC /* Pods-Notta-tvOS.release.xcconfig */,
 				DBFBA9413F75FE94D772D467 /* Pods-Notta-tvOSTests.debug.xcconfig */,
 				74AFEFF3C9B53117067362EF /* Pods-Notta-tvOSTests.release.xcconfig */,
+				44F4B1F1436A32607BAF300F /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */,
+				EB8A1DB9F5C189C0EFB150DC /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -243,6 +289,16 @@
 				C03EAF0D26035B9500EAA496 /* Zocial.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C0877F47262CCD9F00964C21 /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				C0877F92262D15FF00964C21 /* OneSignalNotificationServiceExtension.entitlements */,
+				C0877F48262CCD9F00964C21 /* NotificationService.swift */,
+				C0877F4A262CCD9F00964C21 /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,10 +335,12 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				C493F94BB749F97DE767EF36 /* [CP] Copy Pods Resources */,
+				C0877F51262CCD9F00964C21 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C0877F4C262CCD9F00964C21 /* PBXTargetDependency */,
 			);
 			name = Notta;
 			productName = Notta;
@@ -328,12 +386,31 @@
 			productReference = 2D02E4901E0B4A5D006451C7 /* Notta-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		C0877F45262CCD9F00964C21 /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0877F4E262CCD9F00964C21 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				25074707A52F63DABE9FD00C /* [CP] Check Pods Manifest.lock */,
+				C0877F42262CCD9F00964C21 /* Sources */,
+				C0877F43262CCD9F00964C21 /* Frameworks */,
+				C0877F44262CCD9F00964C21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = C0877F46262CCD9F00964C21 /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -352,6 +429,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2D02E47A1E0B4A5D006451C7;
+					};
+					C0877F45262CCD9F00964C21 = {
+						CreatedOnToolsVersion = 12.4;
+						DevelopmentTeam = 6U94T34A9T;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -372,6 +454,7 @@
 				00E356ED1AD99517003FC87E /* NottaTests */,
 				2D02E47A1E0B4A5D006451C7 /* Notta-tvOS */,
 				2D02E48F1E0B4A5D006451C7 /* Notta-tvOSTests */,
+				C0877F45262CCD9F00964C21 /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -402,6 +485,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2D02E48E1E0B4A5D006451C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0877F44262CCD9F00964C21 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -441,6 +531,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Notta-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		25074707A52F63DABE9FD00C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OneSignalNotificationServiceExtension-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -702,6 +814,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C0877F42262CCD9F00964C21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0877F49262CCD9F00964C21 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -714,6 +834,11 @@
 			isa = PBXTargetDependency;
 			target = 2D02E47A1E0B4A5D006451C7 /* Notta-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
+		};
+		C0877F4C262CCD9F00964C21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C0877F45262CCD9F00964C21 /* OneSignalNotificationServiceExtension */;
+			targetProxy = C0877F4B262CCD9F00964C21 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -765,8 +890,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D94152FBC8469F0AD000C9E9 /* Pods-Notta.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Notta/Notta.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6U94T34A9T;
 				ENABLE_BITCODE = NO;
@@ -789,8 +916,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 41A9FAC647ACF1B8F720A10B /* Pods-Notta.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Notta/Notta.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6U94T34A9T;
 				INFOPLIST_FILE = Notta/Info.plist;
@@ -1030,6 +1159,67 @@
 			};
 			name = Release;
 		};
+		C0877F4F262CCD9F00964C21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44F4B1F1436A32607BAF300F /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 6U94T34A9T;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.notta.mobile.userapp.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C0877F50262CCD9F00964C21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB8A1DB9F5C189C0EFB150DC /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 6U94T34A9T;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.notta.mobile.userapp.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1074,6 +1264,15 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0877F4E262CCD9F00964C21 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0877F4F262CCD9F00964C21 /* Debug */,
+				C0877F50262CCD9F00964C21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
