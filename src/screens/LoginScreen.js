@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -14,6 +14,7 @@ import {
 import { Actions } from 'react-native-router-flux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/Ionicons';
+import OneSignal from 'react-native-onesignal';
 
 import BASE_URL from '../api/BASE_URL';
 
@@ -70,8 +71,17 @@ function LoginScreen() {
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [hidePassword, setShowPassword] = useState(true);
+  const [oneSignalId, setOneSignalId] = useState(null);
 
   const [isLoading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const getOneSigData = async () => {
+      const deviceState = await OneSignal.getDeviceState();
+      setOneSignalId(deviceState.userId);
+    };
+    getOneSigData();
+  }, []);
 
   const onLoginPress = async () => {
     setLoading(true);
@@ -80,7 +90,8 @@ function LoginScreen() {
         method: 'POST',
         body: JSON.stringify({
           email: username,
-          password
+          password,
+          device_id: oneSignalId
         })
       });
       if (result.ok) {

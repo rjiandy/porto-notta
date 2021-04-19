@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -14,6 +14,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
+import OneSignal from 'react-native-onesignal';
 
 import registerUser from '../api/registerUser';
 
@@ -81,6 +82,16 @@ function RegisterScreen() {
   const [isLoading, setLoading] = useState(false);
   const [hidePassword, setShowPassword] = useState(true);
   const [hideConfirmPassword, setShowConfirmPassword] = useState(true);
+  const [oneSignalId, setOneSignalId] = useState(null);
+
+  useEffect(() => {
+    const getOneSigData = async () => {
+      const deviceState = await OneSignal.getDeviceState();
+      setOneSignalId(deviceState.userId);
+    };
+    getOneSigData();
+  }, []);
+
 
   const checkValidation = () => {
     return (
@@ -99,7 +110,8 @@ function RegisterScreen() {
       email,
       phone_no: telephoneNumber,
       password,
-      password_validate: confirmPassword
+      password_validate: confirmPassword,
+      device_id: oneSignalId
     };
 
     try {
