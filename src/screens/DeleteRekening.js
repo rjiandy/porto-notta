@@ -284,8 +284,6 @@ function DeleteRekeningScreen(props) {
                       <RekeningItem
                         key={index}
                         rekeningNumber={data.no_rekening}
-                        // isChecked={selectedRekeningId === data.id}
-                        // onPress={() => setRekeningId(data.id)}
                         isChecked={selectedList.includes(data.id)}
                         onPress={() => {
                           if (selectedList.includes(data.id)) {
