@@ -85,6 +85,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 24,
     paddingVertical: 8
+  },
+  supportContainer: {
+    paddingLeft: 50
+  },
+  supportDetail: {
+    marginTop: 20,
+    paddingLeft: 25
   }
 });
 
@@ -93,6 +100,7 @@ function SettingScreen() {
   const [showConfirmModal, setConfirmModal] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [isSuccess, setSuccess] = useState(false);
+  const [showSupport, setShowSupport] = useState(false);
 
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -155,8 +163,9 @@ function SettingScreen() {
           <View style={{ flex: 1, flexDirection: 'row', paddingLeft: 20 }}>
             <TouchableOpacity
               onPress={() => {
-                if (changePassword) {
+                if (changePassword || showSupport) {
                   setChangePassword(false);
+                  setShowSupport(false);
                 } else {
                   Actions.profileScreen();
                 }
@@ -166,7 +175,7 @@ function SettingScreen() {
             </TouchableOpacity>
             <View style={{ flex: 1, alignItems: 'center' }}>
               <Text style={[fonts['Default-14-black'], { marginLeft: -50 }]}>
-                Pengaturan
+                { showSupport ? 'Bantuan' : 'Pengaturan' }
               </Text>
             </View>
           </View>
@@ -211,7 +220,22 @@ function SettingScreen() {
         }
         <View style={{ flex: 1 }}>
           {
-            changePassword ? (
+            !changePassword && !showSupport && (
+              <>
+                <TouchableOpacity style={styles.whiteRow} onPress={() => setChangePassword(true)}>
+                  <Text style={fonts['Default-14-black-bold']}>Ganti Password</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.whiteRow} onPress={() => setShowSupport(true)}>
+                  <Text style={fonts['Default-14-black-bold']}>Bantuan</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.whiteRow} onPress={() => onLogout()}>
+                  <Text style={fonts['Default-14-black-bold']}>Logout</Text>
+                </TouchableOpacity>
+              </>
+            )
+          }
+          {
+            changePassword && (
               <View style={{ flex: 1 }}>
                 <View style={styles.whiteRow}>
                   <TextInput
@@ -262,15 +286,25 @@ function SettingScreen() {
                   </TouchableOpacity>
                 </View>
               </View>
-            ) : (
-              <>
-                <TouchableOpacity style={styles.whiteRow} onPress={() => setChangePassword(true)}>
-                  <Text style={fonts['Default-14-black-bold']}>Ganti Password</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.whiteRow} onPress={() => onLogout()}>
-                  <Text style={fonts['Default-14-black-bold']}>Logout</Text>
-                </TouchableOpacity>
-              </>
+            )
+          }
+          {
+            showSupport && (
+              <View style={{ flex: 1 }}>
+                <View style={styles.supportContainer}>
+                  <Text style={fonts['Default-14-black-bold']}>
+                    Silahkan menghubungi Kami untuk mendapatkan bantuan:
+                  </Text>
+                  <View style={styles.supportDetail}>
+                    <Text style={[fonts['Default-14-black-bold'], { marginBottom: 10 }]}>
+                      info@notta.id
+                    </Text>
+                    <Text style={fonts['Default-14-black-bold']}>
+                      08123456789
+                    </Text>
+                  </View>
+                </View>
+              </View>
             )
           }
         </View>
