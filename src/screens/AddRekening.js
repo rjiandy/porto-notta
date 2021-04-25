@@ -118,28 +118,31 @@ function RekeningItem(props) {
 }
 
 function SelectRekening(props) {
-  const { rekeningList, bankImage, triggerFetch } = props;
+  const { rekeningList, bankImage, bankId, triggerFetch } = props;
 
-  const [selectedRekeningId, setRekeningId] = useState('');
+  const [selectedList, setSelectedList] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [isSuccess, setSuccess] = useState(false);
 
   const onRegisterRekening = async () => {
     setLoading(true);
     try {
-      await patchJSON(`/bank/activate/${selectedRekeningId}`);
-      setSuccess(true);
-      triggerFetch();
-      setTimeout(() => {
-        setSuccess(false);
-        Actions.replace('homeScreen');
-      }, 700);
+      const result = await patchJSON(`/bank/activate/${bankId}`, {
+        no_rekening: selectedList
+      });
+      if (result) {
+        setSuccess(true);
+        triggerFetch();
+        setTimeout(() => {
+          setSuccess(false);
+          Actions.replace('homeScreen');
+        }, 700);
+      }
     } catch (error) {
       alert(`Failed to activate rekening, ${error.message}`);
     } finally {
       setLoading(false);
     }
-
   };
 
   const inactiveList = rekeningList.filter((data) => !data.active);
@@ -175,10 +178,16 @@ function SelectRekening(props) {
                     return (
                       <RekeningItem
                         rekeningNumber={data.no_rekening}
-                        isChecked={selectedRekeningId === data.id}
-                        onPress={() => setRekeningId(data.id)}
-                        imageUrl={bankImage}
                         key={index}
+                        isChecked={selectedList.includes(data.no_rekening)}
+                        onPress={() => {
+                          if (selectedList.includes(data.no_rekening)) {
+                            setSelectedList(selectedList.filter((id) => id !== data.no_rekening));
+                          } else {
+                            setSelectedList([...selectedList, data.no_rekening]);
+                          }
+                        }}
+                        imageUrl={bankImage}
                       />
                     );
                   })
@@ -189,7 +198,7 @@ function SelectRekening(props) {
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: colors.yellowGreen }]}
                 onPress={onRegisterRekening}
-                disabled={isLoading || !selectedRekeningId}
+                disabled={isLoading || selectedList.length <= 0}
               >
                 {
                   isLoading ? (
@@ -212,7 +221,8 @@ function mapStateToProps(state) {
   const { registerStore } = state;
   return {
     rekeningList: registerStore.rekeningList,
-    bankImage: registerStore.registerBankPayload.data.bank.bank_image
+    bankImage: registerStore.registerBankPayload.data.bank.bank_image,
+    bankId: registerStore.registerBankPayload.data.id
   };
 }
 

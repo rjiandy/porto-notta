@@ -13,7 +13,9 @@ export default async function patchJSON(url, body, params) {
     }
     const response = await fetch(`${BASE_URL}${url}${paramsString}`, {
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
       },
       method: 'PATCH',
       body: JSON.stringify(body)

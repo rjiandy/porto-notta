@@ -7,7 +7,9 @@ export default async function postJSON(url, body) {
     const token = await AsyncStorage.getItem('@token');
     const response = await fetch(`${BASE_URL}${url}`, {
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
       },
       method: 'POST',
       body: JSON.stringify(body)
@@ -20,6 +22,7 @@ export default async function postJSON(url, body) {
       throw result;
     }
   } catch (err) {
+    console.log('err', err);
     throw err;
   }
 }

@@ -116,6 +116,7 @@ function LoginScreen() {
         throw result;
       }
     } catch (err) {
+      console.log(err);
       alert('Gagal Login, Cek Login dan Password Anda dan Silahkan coba lagi.');
     } finally {
       setLoading(false);

@@ -7,7 +7,9 @@ export default async function deleteJSON(url, params) {
     const token = await AsyncStorage.getItem('@token');
     const response = await fetch(`${BASE_URL}${url}`, {
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
       },
       method: 'DELETE'
     });
