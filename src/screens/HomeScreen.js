@@ -290,10 +290,18 @@ function HomeScreen(props) {
           saldo,
           transactions: mutasi_all
         });
-
         setActiveSaldo(`Rp ${thousandSeparator(saldo)}`);
         setListRekening(groupedRekening);
-        setActiveTrxGroup(mutasi_all);
+        if (selectedRekening !== 'Semua') {
+          const foundIndex = groupedRekening.findIndex(individualRek => individualRek.no_rekening === selectedRekening);
+          if (foundIndex > 0) {
+            setActiveTrxGroup(groupedRekening[foundIndex].transactions);
+          } else {
+            setActiveTrxGroup(mutasi_all);
+          }
+        } else {
+          setActiveTrxGroup(mutasi_all);
+        }
       }
     } catch (error) {
       alert('Error Getting Home Data', error.message);
@@ -309,6 +317,7 @@ function HomeScreen(props) {
 
     fetchHome();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [triggerData]);
 
   if (isLoading) {

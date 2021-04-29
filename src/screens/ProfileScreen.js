@@ -189,9 +189,20 @@ function ProfileScreen(props) {
   const onReactivatePress = async (id) => {
     setLoadingActivate(true);
     try {
-      const result = await patchJSON(`/bank/activate/${id}`);
+      const result = await patchJSON(`/bank/re-activate/${id}`);
       if (result) {
-        alert('Success Activate Rekening');
+        alert('Successfully Reactivate Rekening');
+        const newRekeningList = rekeningList.map((rekData) => {
+          if (rekData.id === id) {
+            return {
+              ...rekData,
+              active: true
+            };
+          } else {
+            return rekData;
+          }
+        });
+        setRekeningList(newRekeningList);
       }
     } catch (error) {
       alert(`Failed to activate rekening, ${error.message}`);

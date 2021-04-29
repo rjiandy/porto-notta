@@ -15,7 +15,7 @@ function App() {
     OneSignal.setLogLevel(6, 0);
     OneSignal.setRequiresUserPrivacyConsent(false);
     OneSignal.promptForPushNotificationsWithUserResponse(response => {
-      console.log('res os', response);
+      // console.log('Res One Signal', response);
     });
   }, []);
   return (
