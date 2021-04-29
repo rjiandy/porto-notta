@@ -112,6 +112,7 @@ function NottaNavigation() {
         <Scene key="deleteRekeningScreen" component={DeleteRekeningScreen} title="Delete Rekening" />
         <Scene key="settingScreen" component={SettingScreen} title="Setting Screen" />
         <Tabs
+          gesturesEnabled={false}
           key="mainTabs"
           tabBarPosition="bottom"
           activeTintColor={colors.eerieBlack}
