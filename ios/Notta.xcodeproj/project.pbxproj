@@ -21,6 +21,7 @@
 		4AA7DD208F0E75E51E33FB62 /* libPods-OneSignalNotificationServiceExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51B534939779CF7C2412D194 /* libPods-OneSignalNotificationServiceExtension.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		A0D32E5410AFFE417711C55C /* libPods-Notta-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C62A53EB651E4A2CE573656 /* libPods-Notta-tvOS.a */; };
+		B4376942263BB48E00E89CF2 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4376941263BB48E00E89CF2 /* SplashScreen.storyboard */; };
 		C0877F49262CCD9F00964C21 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0877F48262CCD9F00964C21 /* NotificationService.swift */; };
 		C0877F4D262CCD9F00964C21 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C0877F46262CCD9F00964C21 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -87,6 +88,7 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Notta/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B396B794F714B0A8E243E48 /* Pods-Notta-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notta-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Notta-tvOS/Pods-Notta-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		9C62A53EB651E4A2CE573656 /* libPods-Notta-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Notta-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4376941263BB48E00E89CF2 /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
 		C03EAF0926035B9500EAA496 /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Foundation.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		C03EAF0A26035B9500EAA496 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		C03EAF0B26035B9500EAA496 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SimpleLineIcons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				B4376941263BB48E00E89CF2 /* SplashScreen.storyboard */,
 			);
 			name = Notta;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				B4376942263BB48E00E89CF2 /* SplashScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -894,7 +898,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Notta/Notta.entitlements;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 6U94T34A9T;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Notta/Info.plist;
@@ -920,7 +924,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Notta/Notta.entitlements;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 6U94T34A9T;
 				INFOPLIST_FILE = Notta/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
