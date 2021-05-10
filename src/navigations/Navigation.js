@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Router,
   Stack,
@@ -28,6 +28,7 @@ import SettingScreen from '../screens/SettingScreen';
 import AddBankAccount from '../screens/AddBankAccount';
 import AddRekening from '../screens/AddRekening';
 import DeleteRekeningScreen from '../screens/DeleteRekening';
+import ForgetPasswordScreen from '../screens/ForgetPasswordScreen';
 
 import TabIcon from './TabIcon';
 
@@ -68,12 +69,28 @@ const getTabDataByKey = (key) => {
 
 function CustomTabBar(props) {
   const { state } = props.navigation;
-  const [activeKey, setActiveKey] = useState('homeScreen');
-
 
   const filteredRoutes = state.routes.filter(
     (element) => (element.key === 'homeScreen' || element.key === 'analyticScreen' || element.key === 'profileScreen')
   );
+
+  const checkIndexByKey = (elementKey) => {
+    switch (elementKey) {
+      case 'homeScreen': {
+        return 0;
+      }
+      case 'analyticScreen': {
+        return 1;
+      }
+      case 'profileScreen': {
+        return 2;
+      }
+      default: {
+        return -1;
+      }
+    }
+  };
+
   return (
     <View style={styles.tabBar}>
       {
@@ -84,10 +101,12 @@ function CustomTabBar(props) {
               onPress={() => {
                 Actions.pop();
                 Actions[element.key]();
-                setActiveKey(element.key);
               }}
             >
-              <TabIcon name={getTabDataByKey(element.key).label} active={element.key === activeKey} />
+              <TabIcon
+                name={getTabDataByKey(element.key).label}
+                active={checkIndexByKey(element.key) === state.index}
+              />
             </TouchableOpacity>
           );
         })
@@ -111,6 +130,7 @@ function NottaNavigation() {
         <Scene key="addRekeningScreen" component={AddRekening} title="Add Rekening" />
         <Scene key="deleteRekeningScreen" component={DeleteRekeningScreen} title="Delete Rekening" />
         <Scene key="settingScreen" component={SettingScreen} title="Setting Screen" />
+        <Scene key="forgetPasswordScreen" component={ForgetPasswordScreen} title="Forget Password" />
         <Tabs
           gesturesEnabled={false}
           key="mainTabs"
