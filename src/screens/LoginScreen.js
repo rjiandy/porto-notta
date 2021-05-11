@@ -64,6 +64,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 15,
     marginBottom: 14
+  },
+  forgetPassword: {
+    paddingVertical: 10,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });
 
@@ -184,6 +189,14 @@ function LoginScreen() {
               disabled={isLoading}
             >
               <Text style={fonts['Default-14-white-bold']}>Daftar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.forgetPassword}
+              onPress={() => Actions.forgetPasswordScreen()}
+            >
+              <Text style={fonts['Default-14-black-bold']}>
+                Lupa Password?
+              </Text>
             </TouchableOpacity>
           </View>
 

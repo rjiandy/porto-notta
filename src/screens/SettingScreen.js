@@ -276,7 +276,7 @@ function SettingScreen() {
                     <Icon name={hideConfirmPassword ? 'eye-outline' : 'eye-off-outline'} size={24} color={colors.lightGray} />
                   </TouchableOpacity>
                 </View>
-                <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+                <View style={{ flex: 1, justifyContent: 'flex-end', marginBottom: 100 }}>
                   <TouchableOpacity
                     style={styles.button}
                     onPress={() => setConfirmModal(true)}

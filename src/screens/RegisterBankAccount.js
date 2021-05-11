@@ -164,7 +164,7 @@ function RegisterBankAccount(props) {
           <View style={styles.container}>
             <View style={styles.header}>
               <View style={{ flex: 1, flexDirection: 'row', paddingLeft: 20 }}>
-                <TouchableOpacity onPress={() => Actions.pop()}>
+                <TouchableOpacity onPress={() => Actions.replace('homeScreen')}>
                   <Image style={{ width: 30, height: 22 }} source={LeftArrow} />
                 </TouchableOpacity>
                 <View style={{ flex: 1, alignItems: 'center' }}>
