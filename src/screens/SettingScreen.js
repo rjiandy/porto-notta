@@ -7,7 +7,9 @@ import {
   TouchableOpacity,
   TextInput,
   Modal,
-  ActivityIndicator
+  ActivityIndicator,
+  Platform,
+  ScrollView
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Actions } from 'react-native-router-flux';
@@ -25,16 +27,18 @@ import LeftArrow from '../assets/left_icon.png';
 
 import patchJSON from '../api/patchJSON';
 
+const isAndroid = Platform.OS === 'android';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.bodyWhite
   },
   header: {
-    marginTop: 30,
+    marginTop: isAndroid ? 15 : 30,
     flexDirection: 'row',
     justifyContent: 'center',
-    marginBottom: 30
+    marginBottom: isAndroid ? 15 : 30
   },
   whiteRow: {
     paddingVertical: 12,
@@ -44,7 +48,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: colors.cultured,
     flexDirection: 'row',
-    paddingRight: 20
+    paddingRight: 20,
+    alignItems: 'center'
   },
   overlay: {
     position: 'absolute',
@@ -72,7 +77,8 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginBottom: 24,
     backgroundColor: colors.yellowGreen,
-    marginHorizontal: 30
+    marginHorizontal: 30,
+    marginTop: 30
   },
   smallButtonGroup: {
     flexDirection: 'row',
@@ -180,134 +186,136 @@ function SettingScreen() {
             </View>
           </View>
         </View>
-        {
-          showConfirmModal && (
-            <Modal
-              presentationStyle="overFullScreen"
-              transparent
-            >
-              <View style={styles.overlay}>
-                <View style={styles.modalContent}>
-                  <Text style={[fonts['Default-14-black'], { textAlign: 'center' }]}>
-                    Apakah Anda Yakin Untuk Mengganti Password Anda?
-                  </Text>
-                  <View style={styles.smallButtonGroup}>
-                    <TouchableOpacity
-                      style={[styles.smallButton, { backgroundColor: colors.yellowGreen }]}
-                      onPress={() => onConfirmPress()}
-                      disabled={isLoading}
-                    >
-                      {
-                        isLoading ? (
-                          <ActivityIndicator size="small" color={colors.white} />
-                        ) : (
-                          <Text style={fonts['Default-14-white']}>Ganti</Text>
-                        )
-                      }
+        <ScrollView>
+          {
+            showConfirmModal && (
+              <Modal
+                presentationStyle="overFullScreen"
+                transparent
+              >
+                <View style={styles.overlay}>
+                  <View style={styles.modalContent}>
+                    <Text style={[fonts['Default-14-black'], { textAlign: 'center' }]}>
+                      Apakah Anda Yakin Untuk Mengganti Password Anda?
+                    </Text>
+                    <View style={styles.smallButtonGroup}>
+                      <TouchableOpacity
+                        style={[styles.smallButton, { backgroundColor: colors.yellowGreen }]}
+                        onPress={() => onConfirmPress()}
+                        disabled={isLoading}
+                      >
+                        {
+                          isLoading ? (
+                            <ActivityIndicator size="small" color={colors.white} />
+                          ) : (
+                            <Text style={fonts['Default-14-white']}>Ganti</Text>
+                          )
+                        }
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        style={[styles.smallButton, { backgroundColor: colors.candyPink }]}
+                        onPress={() => setConfirmModal(false)}
+                        disabled={isLoading}
+                      >
+                        <Text style={fonts['Default-14-white']}>Batal</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                </View>
+              </Modal>
+            )
+          }
+          <View style={{ flex: 1 }}>
+            {
+              !changePassword && !showSupport && (
+                <>
+                  <TouchableOpacity style={styles.whiteRow} onPress={() => setChangePassword(true)}>
+                    <Text style={fonts['Default-14-black-bold']}>Ganti Password</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.whiteRow} onPress={() => setShowSupport(true)}>
+                    <Text style={fonts['Default-14-black-bold']}>Bantuan</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.whiteRow} onPress={() => onLogout()}>
+                    <Text style={fonts['Default-14-black-bold']}>Logout</Text>
+                  </TouchableOpacity>
+                </>
+              )
+            }
+            {
+              changePassword && (
+                <View style={{ flex: 1 }}>
+                  <View style={styles.whiteRow}>
+                    <TextInput
+                      placeholder="Password Lama"
+                      autoCapitalize="none"
+                      value={oldPassword}
+                      onChangeText={(text) => setOldPassword(text)}
+                      secureTextEntry={hideOldPassword}
+                      style={[isAndroid && { padding: 0 }, { flex: 1 }]}
+                    />
+                    <TouchableOpacity onPress={() => setShowOldPassword(!hideOldPassword)}>
+                      <Icon name={hideOldPassword ? 'eye-outline' : 'eye-off-outline'} size={24} color={colors.lightGray} />
                     </TouchableOpacity>
+                  </View>
+                  <View style={styles.whiteRow}>
+                    <TextInput
+                      placeholder="Password Baru"
+                      autoCapitalize="none"
+                      value={newPassword}
+                      onChangeText={(text) => setNewPassword(text)}
+                      secureTextEntry={hidePassword}
+                      style={[isAndroid && { padding: 0 }, { flex: 1 }]}
+                    />
+                    <TouchableOpacity onPress={() => setShowPassword(!hidePassword)}>
+                      <Icon name={hidePassword ? 'eye-outline' : 'eye-off-outline'} size={24} color={colors.lightGray} />
+                    </TouchableOpacity>
+                  </View>
+                  <View style={styles.whiteRow}>
+                    <TextInput
+                      placeholder="Ulangi Password Baru"
+                      autoCapitalize="none"
+                      value={newConfirmationPassword}
+                      onChangeText={(text) => setConfirmationPassword(text)}
+                      secureTextEntry={hideConfirmPassword}
+                      style={[isAndroid && { padding: 0 }, { flex: 1 }]}
+                    />
+                    <TouchableOpacity onPress={() => setShowConfirmPassword(!hideConfirmPassword)}>
+                      <Icon name={hideConfirmPassword ? 'eye-outline' : 'eye-off-outline'} size={24} color={colors.lightGray} />
+                    </TouchableOpacity>
+                  </View>
+                  <View style={{ flex: 1, justifyContent: 'flex-end', marginBottom: 100 }}>
                     <TouchableOpacity
-                      style={[styles.smallButton, { backgroundColor: colors.candyPink }]}
-                      onPress={() => setConfirmModal(false)}
-                      disabled={isLoading}
+                      style={styles.button}
+                      onPress={() => setConfirmModal(true)}
+                      disabled={!isAllFilled()}
                     >
-                      <Text style={fonts['Default-14-white']}>Batal</Text>
+                      <Text style={fonts['Default-14-white-bold']}>Ganti Password</Text>
                     </TouchableOpacity>
                   </View>
                 </View>
-              </View>
-            </Modal>
-          )
-        }
-        <View style={{ flex: 1 }}>
-          {
-            !changePassword && !showSupport && (
-              <>
-                <TouchableOpacity style={styles.whiteRow} onPress={() => setChangePassword(true)}>
-                  <Text style={fonts['Default-14-black-bold']}>Ganti Password</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.whiteRow} onPress={() => setShowSupport(true)}>
-                  <Text style={fonts['Default-14-black-bold']}>Bantuan</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.whiteRow} onPress={() => onLogout()}>
-                  <Text style={fonts['Default-14-black-bold']}>Logout</Text>
-                </TouchableOpacity>
-              </>
-            )
-          }
-          {
-            changePassword && (
-              <View style={{ flex: 1 }}>
-                <View style={styles.whiteRow}>
-                  <TextInput
-                    placeholder="Password Lama"
-                    autoCapitalize="none"
-                    value={oldPassword}
-                    onChangeText={(text) => setOldPassword(text)}
-                    secureTextEntry={hideOldPassword}
-                    style={{ flex: 1 }}
-                  />
-                  <TouchableOpacity onPress={() => setShowOldPassword(!hideOldPassword)}>
-                    <Icon name={hideOldPassword ? 'eye-outline' : 'eye-off-outline'} size={24} color={colors.lightGray} />
-                  </TouchableOpacity>
-                </View>
-                <View style={styles.whiteRow}>
-                  <TextInput
-                    placeholder="Password Baru"
-                    autoCapitalize="none"
-                    value={newPassword}
-                    onChangeText={(text) => setNewPassword(text)}
-                    secureTextEntry={hidePassword}
-                    style={{ flex: 1 }}
-                  />
-                  <TouchableOpacity onPress={() => setShowPassword(!hidePassword)}>
-                    <Icon name={hidePassword ? 'eye-outline' : 'eye-off-outline'} size={24} color={colors.lightGray} />
-                  </TouchableOpacity>
-                </View>
-                <View style={styles.whiteRow}>
-                  <TextInput
-                    placeholder="Ulangi Password Baru"
-                    autoCapitalize="none"
-                    value={newConfirmationPassword}
-                    onChangeText={(text) => setConfirmationPassword(text)}
-                    secureTextEntry={hideConfirmPassword}
-                    style={{ flex: 1 }}
-                  />
-                  <TouchableOpacity onPress={() => setShowConfirmPassword(!hideConfirmPassword)}>
-                    <Icon name={hideConfirmPassword ? 'eye-outline' : 'eye-off-outline'} size={24} color={colors.lightGray} />
-                  </TouchableOpacity>
-                </View>
-                <View style={{ flex: 1, justifyContent: 'flex-end', marginBottom: 100 }}>
-                  <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => setConfirmModal(true)}
-                    disabled={!isAllFilled()}
-                  >
-                    <Text style={fonts['Default-14-white-bold']}>Ganti Password</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            )
-          }
-          {
-            showSupport && (
-              <View style={{ flex: 1 }}>
-                <View style={styles.supportContainer}>
-                  <Text style={fonts['Default-14-black-bold']}>
-                    Silahkan menghubungi Kami untuk mendapatkan bantuan:
-                  </Text>
-                  <View style={styles.supportDetail}>
-                    <Text style={[fonts['Default-14-black-bold'], { marginBottom: 10 }]}>
-                      info@notta.id
-                    </Text>
+              )
+            }
+            {
+              showSupport && (
+                <View style={{ flex: 1 }}>
+                  <View style={styles.supportContainer}>
                     <Text style={fonts['Default-14-black-bold']}>
-                      08123456789
+                      Silahkan menghubungi Kami untuk mendapatkan bantuan:
                     </Text>
+                    <View style={styles.supportDetail}>
+                      <Text style={[fonts['Default-14-black-bold'], { marginBottom: 10 }]}>
+                        info@notta.id
+                      </Text>
+                      <Text style={fonts['Default-14-black-bold']}>
+                        08123456789
+                      </Text>
+                    </View>
                   </View>
                 </View>
-              </View>
-            )
-          }
-        </View>
+              )
+            }
+          </View>
+        </ScrollView>
         <Navbar />
       </View>
     );

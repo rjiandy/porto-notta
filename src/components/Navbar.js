@@ -2,18 +2,21 @@ import React, { useState } from 'react';
 import {
   View,
   TouchableOpacity,
-  StyleSheet
+  StyleSheet,
+  Platform
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 import colors from '../themes/colors';
 import TabIcon from '../navigations/TabIcon';
 
+const isAndroid = Platform.OS === 'android';
+
 const styles = StyleSheet.create({
   tabBar: {
-    height: 88,
-    paddingTop: 11,
-    paddingBottom: 30,
+    height: isAndroid ? 68 : 88,
+    paddingTop: isAndroid ? 0 : 11,
+    paddingBottom: isAndroid ? 0 : 30,
     elevation: 8,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
