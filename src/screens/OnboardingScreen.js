@@ -5,7 +5,8 @@ import {
   Dimensions,
   Image,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Swiper from 'react-native-swiper';
@@ -18,6 +19,7 @@ import colors from '../themes/colors';
 import fonts from '../themes/fonts';
 
 const windowHeight = Dimensions.get('window').height;
+const isAndroid = Platform.OS === 'android';
 
 const styles = StyleSheet.create({
   button: {
@@ -35,6 +37,11 @@ const styles = StyleSheet.create({
     height: windowHeight * 0.75,
     width: '100%',
     marginBottom: 24
+  },
+  androidImage: {
+    height: windowHeight * 0.70,
+    width: '100%',
+    marginBottom: 8
   }
 });
 
@@ -49,14 +56,23 @@ function OnboardingScreen() {
         loop={false}
         activeDotColor={colors.jet}
         dotColor={colors.lightGray}
-        paginationStyle={{ marginBottom: 40 }}
+        paginationStyle={{ marginBottom: isAndroid ? windowHeight * 0.07 : 40 }}
       >
         <View style={{ flex: 1 }}>
           <View style={{ flex: 1, backgroundColor: colors.bodyWhite }}>
-            <Image
-              source={FirstOnboard}
-              style={styles.image}
-            />
+            {
+              isAndroid ? (
+                <Image
+                  source={FirstOnboard}
+                  style={styles.androidImage}
+                />
+              ) : (
+                <Image
+                  source={FirstOnboard}
+                  style={styles.image}
+                />
+              )
+            }
             <View style={{ marginHorizontal: 60 }} >
               <Text style={{ textAlign: 'center', lineHeight: 24 }}>
                 Semua Rekeningmu Dalam Satu Aplikasi. Kamu Bisa Memonitor Semua Rekeningmu Dalam Satu Aplikasi
@@ -66,10 +82,19 @@ function OnboardingScreen() {
         </View>
         <View style={{ flex: 1 }}>
           <View style={{ flex: 1, backgroundColor: colors.maximumYellowRed }}>
-            <Image
-              source={SecondOnboard}
-              style={styles.image}
-            />
+            {
+              isAndroid ? (
+                <Image
+                  source={SecondOnboard}
+                  style={styles.androidImage}
+                />
+              ) : (
+                <Image
+                  source={SecondOnboard}
+                  style={styles.image}
+                />
+              )
+            }
             <View style={{ marginHorizontal: 60 }} >
               <Text style={{ textAlign: 'center', lineHeight: 24 }}>
                 Analisa Pengeluaran Dan Pendapatanmu Dari Semua Rekening Yang Kamu Miliki
@@ -79,10 +104,19 @@ function OnboardingScreen() {
         </View>
         <View style={{ flex: 1 }}>
           <View style={{ flex: 1, backgroundColor: colors.carolinaBlue }}>
-            <Image
-              source={ThirdOnboard}
-              style={styles.image}
-            />
+            {
+              isAndroid ? (
+                <Image
+                  source={ThirdOnboard}
+                  style={styles.androidImage}
+                />
+              ) : (
+                <Image
+                  source={ThirdOnboard}
+                  style={styles.image}
+                />
+              )
+            }
             <View style={{ marginHorizontal: 60 }} >
               <Text style={{ textAlign: 'center', lineHeight: 24 }}>
                 Monitor Semua Rekeningmu Di Notta Tempat Yang Bisa Kamu Percaya
