@@ -36,11 +36,12 @@ import postJSON from '../api/postJSON';
 import BankOptions from './components/BankOptions';
 
 const deviceWidth = Dimensions.get('window').width;
+const isAndroid = Platform.OS === 'android';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 40
+    paddingTop: isAndroid ? 4 : 40
   },
   header: {
     marginTop: 40,

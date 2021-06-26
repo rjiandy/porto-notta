@@ -9,9 +9,9 @@ import {
 import {
   StyleSheet,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform
 } from 'react-native';
-
 
 import colors from '../themes/colors';
 
@@ -32,11 +32,13 @@ import ForgetPasswordScreen from '../screens/ForgetPasswordScreen';
 
 import TabIcon from './TabIcon';
 
+const isAndroid = Platform.OS === 'android';
+
 const styles = StyleSheet.create({
   tabBar: {
-    height: 88,
-    paddingTop: 11,
-    paddingBottom: 30,
+    height: isAndroid ? 68 : 88,
+    paddingTop: isAndroid ? 0 : 11,
+    paddingBottom: isAndroid ? 0 : 30,
     elevation: 8,
     flexDirection: 'row',
     justifyContent: 'space-evenly',

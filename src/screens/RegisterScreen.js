@@ -29,10 +29,12 @@ import PasswordIcon from '../assets/password_icon.svg';
 import EmailIcon from '../assets/email_icon.svg';
 import PhoneIcon from '../assets/phone_icon.svg';
 
+const isAndroid = Platform.OS === 'android';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 40
+    paddingTop: isAndroid ? 4 : 40
   },
   header: {
     marginTop: 40,

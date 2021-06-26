@@ -6,7 +6,8 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
-  ActivityIndicator
+  ActivityIndicator,
+  Platform
 } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -21,10 +22,12 @@ import patchJSON from '../api/patchJSON';
 
 import { Success } from '../components';
 
+const isAndroid = Platform.OS === 'android';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 40
+    paddingTop: isAndroid ? 4 : 40
   },
   header: {
     marginTop: 40,
