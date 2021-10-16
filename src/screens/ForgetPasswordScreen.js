@@ -131,6 +131,7 @@ function ForgetPasswordScreen() {
                 onChangeText={(input) => setUserName(input)}
                 style={[fonts['Default-14-black'], { marginLeft: 10, flex: 1 }]}
                 autoCapitalize="none"
+                placeholderTextColor={colors.silverChalice}
               />
             </View>
             <View style={styles.buttonContainer}>

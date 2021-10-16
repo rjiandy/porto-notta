@@ -154,6 +154,7 @@ function LoginScreen() {
               onChangeText={(input) => setUserName(input)}
               style={[fonts['Default-14-black'], { marginLeft: 10, flex: 1 }]}
               autoCapitalize="none"
+              placeholderTextColor={colors.silverChalice}
             />
           </View>
           <View style={styles.inputContainer}>
@@ -165,6 +166,7 @@ function LoginScreen() {
               onChangeText={(input) => setPassword(input)}
               style={[fonts['Default-14-black'], { marginLeft: 10, flex: 1 }]}
               autoCapitalize="none"
+              placeholderTextColor={colors.silverChalice}
             />
             <TouchableOpacity onPress={() => setShowPassword(!hidePassword)}>
               <Icon name={hidePassword ? 'eye-outline' : 'eye-off-outline'} size={24} color={colors.lightGray} />

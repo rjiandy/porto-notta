@@ -168,6 +168,7 @@ function RegisterScreen() {
               value={fullName}
               onChangeText={(input) => setFullName(input)}
               autoCapitalize="none"
+              placeholderTextColor={colors.silverChalice}
             />
           </View>
           <View style={styles.inputContainer}>
@@ -178,6 +179,7 @@ function RegisterScreen() {
               onChangeText={(input) => setEmail(input)}
               style={[fonts['Default-14-black'], { marginLeft: 10 }]}
               autoCapitalize="none"
+              placeholderTextColor={colors.silverChalice}
             />
           </View>
           <View style={styles.inputContainer}>
@@ -188,6 +190,7 @@ function RegisterScreen() {
               onChangeText={(input) => setTelephoneNumber(input)}
               style={[fonts['Default-14-black'], { marginLeft: 10, flex: 1 }]}
               autoCapitalize="none"
+              placeholderTextColor={colors.silverChalice}
             />
           </View>
           <View style={styles.inputContainer}>
@@ -199,6 +202,7 @@ function RegisterScreen() {
               onChangeText={(input) => setPassword(input)}
               style={[fonts['Default-14-black'], { marginLeft: 10, flex: 1 }]}
               autoCapitalize="none"
+              placeholderTextColor={colors.silverChalice}
             />
             <TouchableOpacity onPress={() => setShowPassword(!hidePassword)}>
               <Icon name={hidePassword ? 'eye-outline' : 'eye-off-outline'} size={24} color={colors.lightGray} />
@@ -213,6 +217,7 @@ function RegisterScreen() {
               onChangeText={(input) => setConfirmPassword(input)}
               style={[fonts['Default-14-black'], { marginLeft: 10, flex: 1 }]}
               autoCapitalize="none"
+              placeholderTextColor={colors.silverChalice}
             />
             <TouchableOpacity onPress={() => setShowConfirmPassword(!hideConfirmPassword)}>
               <Icon name={hideConfirmPassword ? 'eye-outline' : 'eye-off-outline'} size={24} color={colors.lightGray} />

@@ -143,7 +143,7 @@ android {
         applicationId "com.notta.mobile.userapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 3
+        versionCode 4
         versionName "0.0.3"
         multiDexEnabled true
     }
